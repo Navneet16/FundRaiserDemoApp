@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint -f codeframe \"**/*.js\"",
+    "eslint": "eslint -f codeframe \"**/*.ts\"",
     "tslint": "tslint -t codeFrame -c tslint.json \"**/*.tsx\" \"**/*.d.ts\""
   },
   "repository": {
