@@ -6,22 +6,22 @@ import React, { Component } from 'react';
   render() {
     return (
      <header id="header">
-        <div class="container">
+        <div className="container">
 
-            <div class="navbar-header">
-                <div class="navbar-brand">
-                    <a class="logo" href="/">
+            <div className="navbar-header">
+                <div className="navbar-brand">
+                    <a className="logo" href="/">
                         <img src="/images/logo.png" alt="logo"/>
                     </a>
                 </div>
 
-                <button class="navbar-toggle">
+                <button className="navbar-toggle">
                     <span></span>
                 </button>
             </div>
 
             <nav id="nav">
-                <ul class="main-menu nav navbar-nav navbar-right">
+                <ul className="main-menu nav navbar-nav navbar-right">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/courses">Courses</a></li>

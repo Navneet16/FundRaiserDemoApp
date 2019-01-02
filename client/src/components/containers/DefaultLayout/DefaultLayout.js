@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-// import {  Route, Switch } from 'react-router-dom';
+import {  Route, Switch , Redirect} from 'react-router-dom';
 import Header from './header'
 import Footer from './footer'
+import {HomePage} from '../../home'
+import {Project} from '../../Projects'
 
  
  class DefaultLayout extends Component {
@@ -10,6 +12,12 @@ import Footer from './footer'
     return (
        <div> 
           <Header/>
+             <Switch>
+              <Route path='/' component={HomePage} />
+              <Route path='/project' component={Project} />
+              <Redirect to='/' />
+            </Switch>
+
           <Footer/>
        </div> 
     );

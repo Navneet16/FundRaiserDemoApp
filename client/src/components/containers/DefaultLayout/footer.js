@@ -7,22 +7,22 @@ import React, { Component } from 'react';
     return (
 
 
-<footer id="footer" class="section">
+<footer id="footer" className="section">
 
-<div class="container">
+<div className="container">
 
-    <div class="row">
+    <div className="row">
 
-        <div class="col-md-6">
-            <div class="footer-logo">
-                <a class="logo" href="index.html">
+        <div className="col-md-6">
+            <div className="footer-logo">
+                <a className="logo" href="index.html">
                     <img src="/images/logo.png" alt="logo"/>
                 </a>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <ul class="footer-nav">
+        <div className="col-md-6">
+            <ul className="footer-nav">
                 <li><a href="/index">Home</a></li>
                 <li><a href="/social">About</a></li>
                 <li><a href="/social">Courses</a></li>
@@ -33,21 +33,21 @@ import React, { Component } from 'react';
 
     </div>
 
-    <div id="bottom-footer" class="row">
+    <div id="bottom-footer" className="row">
 
-        <div class="col-md-4 col-md-push-8">
-            <ul class="footer-social">
-                <li><a href="/social" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="/social" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="/social" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="/social" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="/social" class="youtube"><i class="fa fa-youtube"></i></a></li>
-                <li><a href="/social" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+        <div className="col-md-4 col-md-push-8">
+            <ul className="footer-social">
+                <li><a href="/social" className="facebook"><i className="fa fa-facebook"></i></a></li>
+                <li><a href="/social" className="twitter"><i className="fa fa-twitter"></i></a></li>
+                <li><a href="/social" className="google-plus"><i className="fa fa-google-plus"></i></a></li>
+                <li><a href="/social" className="instagram"><i className="fa fa-instagram"></i></a></li>
+                <li><a href="/social" className="youtube"><i className="fa fa-youtube"></i></a></li>
+                <li><a href="/social" className="linkedin"><i className="fa fa-linkedin"></i></a></li>
             </ul>
         </div>
 
-        <div class="col-md-8 col-md-pull-4">
-            <div class="footer-copyright">
+        <div className="col-md-8 col-md-pull-4">
+            <div className="footer-copyright">
                 <span>&copy; Copyright {(new Date()).getFullYear()} All Rights Reserved</span>
             </div>
         </div>
