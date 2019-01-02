@@ -4,7 +4,10 @@ import Header from './header'
 import Footer from './footer'
 import {HomePage} from '../../home'
 import {Project} from '../../Projects'
-
+import {Blog} from '../../blog'
+import {Regular} from '../../regular'
+import {Contact} from '../../contact'
+ 
  
  class DefaultLayout extends Component {
 
@@ -15,6 +18,9 @@ import {Project} from '../../Projects'
              <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/project' component={Project} />
+              <Route path='/blogs' component={Blog} />
+              <Route path='/regular' component={Regular} />
+              <Route path='/contact' component={Contact} />
               <Redirect to='/' />
             </Switch>
 

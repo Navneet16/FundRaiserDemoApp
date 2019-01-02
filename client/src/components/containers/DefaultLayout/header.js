@@ -7,7 +7,7 @@ import React, { Component } from 'react';
     return (
       <div>  
         <div id="preloader">
-        <div class="preload-content">
+        <div className="preload-content">
             <div id="world-load"></div>
         </div>
     </div>
