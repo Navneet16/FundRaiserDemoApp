@@ -3,8 +3,8 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 // import { Provider } from 'react-redux';
 
 import './style/css/style.css';
-import './style/css/bootstrap.min.css';
-import './style/css/font-awesome.min.css';
+// import './style/css/bootstrap.min.css';
+// import './style/css/font-awesome.min.css';
 
 import {DefaultLayout} from './components';
 // import Store from './common';

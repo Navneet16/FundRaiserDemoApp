@@ -13,7 +13,7 @@ import {Project} from '../../Projects'
        <div> 
           <Header/>
              <Switch>
-              <Route path='/' component={HomePage} />
+              <Route exact path='/' component={HomePage} />
               <Route path='/project' component={Project} />
               <Redirect to='/' />
             </Switch>

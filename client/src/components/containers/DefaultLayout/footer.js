@@ -7,56 +7,43 @@ import React, { Component } from 'react';
     return (
 
 
-<footer id="footer" className="section">
-
-<div className="container">
-
-    <div className="row">
-
-        <div className="col-md-6">
-            <div className="footer-logo">
-                <a className="logo" href="index.html">
-                    <img src="/images/logo.png" alt="logo"/>
-                </a>
+        <footer className="footer-area">
+        <div className="container">
+            <div className="row">
+                <div className="col-12 col-md-4">
+                    <div className="footer-single-widget">
+                        <a href="/"><img src="img/core-img/logo.png" alt=""/></a>
+                        <div className="copywrite-text mt-30">
+                            <p>
+                                Copyright &copy;{new Date().getFullYear()}
+                           </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-md-4">
+                    <div className="footer-single-widget">
+                        <ul className="footer-menu d-flex justify-content-between">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/">Fashion</a></li>
+                            <li><a href="/">Lifestyle</a></li>
+                            <li><a href="/">Contact</a></li>
+                            <li><a href="/">Gadgets</a></li>
+                            <li><a href="/">Video</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="col-12 col-md-4">
+                    <div className="footer-single-widget">
+                        <h5>Subscribe</h5>
+                        <form action="/" method="post">
+                            <input type="email" name="email" id="email" placeholder="Enter your mail"/>
+                            <button type="button"><i className="fa fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div className="col-md-6">
-            <ul className="footer-nav">
-                <li><a href="/index">Home</a></li>
-                <li><a href="/social">About</a></li>
-                <li><a href="/social">Courses</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div id="bottom-footer" className="row">
-
-        <div className="col-md-4 col-md-push-8">
-            <ul className="footer-social">
-                <li><a href="/social" className="facebook"><i className="fa fa-facebook"></i></a></li>
-                <li><a href="/social" className="twitter"><i className="fa fa-twitter"></i></a></li>
-                <li><a href="/social" className="google-plus"><i className="fa fa-google-plus"></i></a></li>
-                <li><a href="/social" className="instagram"><i className="fa fa-instagram"></i></a></li>
-                <li><a href="/social" className="youtube"><i className="fa fa-youtube"></i></a></li>
-                <li><a href="/social" className="linkedin"><i className="fa fa-linkedin"></i></a></li>
-            </ul>
-        </div>
-
-        <div className="col-md-8 col-md-pull-4">
-            <div className="footer-copyright">
-                <span>&copy; Copyright {(new Date()).getFullYear()} All Rights Reserved</span>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-</footer>
+    </footer>
 
     );
   }
