@@ -2,60 +2,24 @@ import React, { Component } from 'react';
 // import {  Route, Switch } from 'react-router-dom';
 
  class HomePage extends Component {
-
+ 
   render() {
     return (
       <div>  
-        <div className="hero-area">
-
-        <div className="hero-slides owl-carousel">
-            <div className="single-hero-slide bg-img background-overlay" style={{"backgroundImage" : "url(img/blog-img/bg2.jpg)"}}></div>
-            <div className="single-hero-slide bg-img background-overlay" style={{"backgroundImage" : "url(img/blog-img/bg1.jpg)"}}></div>
-        </div>
-
-        <div className="hero-post-area">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="hero-post-slide">
-                            <div className="single-slide d-flex align-items-center">
-                                <div className="post-number">
-                                    <p>1</p>
-                                </div>
-                                <div className="post-title">
-                                    <a href="/">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex</a>
-                                </div>
-                            </div>
-                            <div className="single-slide d-flex align-items-center">
-                                <div className="post-number">
-                                    <p>2</p>
-                                </div>
-                                <div className="post-title">
-                                    <a href="/">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex</a>
-                                </div>
-                            </div>
-                            <div className="single-slide d-flex align-items-center">
-                                <div className="post-number">
-                                    <p>3</p>
-                                </div>
-                                <div className="post-title">
-                                    <a href="/">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex</a>
-                                </div>
-                            </div>
-                            <div className="single-slide d-flex align-items-center">
-                                <div className="post-number">
-                                    <p>4</p>
-                                </div>
-                                <div className="post-title">
-                                    <a href="/">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex</a>
-                                </div>
+ 
+        <div className="height-400" style={{"backgroundColor" : "#7395AE" }}>
+                <div className="container h-100">
+                    <div className="row h-100 align-items-center justify-content-center">
+                        <div className="col-12 col-md-8 col-lg-6">
+                            <div className="single-blog-title text-center">
+                                <h3>We connect Investors to Creators </h3>
+                                <p>Fund Raiser is a funding platform for creative projects. A home for film, music, art, theater, games, comics, design, photography, and more.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
 
     <div className="main-content-wrapper section-padding-100">
         <div className="container">

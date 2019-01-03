@@ -18,7 +18,7 @@ import {Contact} from '../../contact'
              <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/project' component={Project} />
-              <Route path='/blogs' component={Blog} />
+              <Route path='/blog' component={Blog} />
               <Route path='/regular' component={Regular} />
               <Route path='/contact' component={Contact} />
               <Redirect to='/' />
