@@ -13,7 +13,7 @@ import React, { Component } from 'react';
                         <div className="col-12 col-md-8 col-lg-6">
                             <div className="single-blog-title text-center">
                                 <h3>We connect Investors to Creators </h3>
-                                <p>Fund Raiser is a funding platform for creative projects. A home for film, music, art, theater, games, comics, design, photography, and more.</p>
+                                <p style={{"color" : "#FFFFFF"}}>Fund Raiser is a funding platform for creative projects. A home for film, music, art, theater, games, comics, design, photography, and more.</p>
                             </div>
                         </div>
                     </div>
@@ -28,38 +28,33 @@ import React, { Component } from 'react';
                     <div className="post-content-area mb-50">
                         <div className="world-catagory-area">
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
-                                <li className="title">Don’t Miss</li>
-
+                                <li className="title">Featured Projects</li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" id="tab1" data-toggle="tab" href="/world-tab-1" role="tab" aria-controls="world-tab-1" aria-selected="true">All</a>
+                                    <a className="nav-link" id="tab2" data-toggle="tab" href="/world-tab-2" role="tab" aria-controls="world-tab-2" aria-selected="false">Arts</a>
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" id="tab2" data-toggle="tab" href="/world-tab-2" role="tab" aria-controls="world-tab-2" aria-selected="false">Style hunter</a>
+                                    <a className="nav-link" id="tab3" data-toggle="tab" href="/world-tab-3" role="tab" aria-controls="world-tab-3" aria-selected="false">Comics & Illustration</a>
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" id="tab3" data-toggle="tab" href="/world-tab-3" role="tab" aria-controls="world-tab-3" aria-selected="false">Vogue</a>
+                                    <a className="nav-link" id="tab4" data-toggle="tab" href="/world-tab-4" role="tab" aria-controls="world-tab-4" aria-selected="false"> 
+                                       Design & Tech 
+                                     </a>
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" id="tab4" data-toggle="tab" href="/world-tab-4" role="tab" aria-controls="world-tab-4" aria-selected="false">Health &amp; Fitness</a>
+                                    <a className="nav-link" id="tab5" data-toggle="tab" href="/world-tab-5" role="tab" aria-controls="world-tab-5" aria-selected="false">Film</a>
                                 </li>
 
-                                <li className="nav-item">
-                                    <a className="nav-link" id="tab5" data-toggle="tab" href="/world-tab-5" role="tab" aria-controls="world-tab-5" aria-selected="false">Travel</a>
-                                </li>
-
-                                <li className="nav-item">
-                                    <a className="nav-link" id="tab6" data-toggle="tab" href="/world-tab-6" role="tab" aria-controls="world-tab-6" aria-selected="false">Gadgets</a>
-                                </li>
 
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">More</a>
                                     <div className="dropdown-menu">
-                                        <a className="nav-link" id="tab7" data-toggle="tab" href="/world-tab-7" role="tab" aria-controls="world-tab-7" aria-selected="false">Sports</a>
-                                        <a className="nav-link" id="tab8" data-toggle="tab" href="/world-tab-8" role="tab" aria-controls="world-tab-8" aria-selected="false">Politices</a>
-                                        <a className="nav-link" id="tab9" data-toggle="tab" href="/world-tab-9" role="tab" aria-controls="world-tab-9" aria-selected="false">Features</a>
+                                        <a  className="nav-link" id="tab6" data-toggle="tab" href="/world-tab-6" role="tab" aria-controls="world-tab-6" aria-selected="false">Food & Craft</a>
+                                        <a className="nav-link" id="tab7" data-toggle="tab" href="/world-tab-7" role="tab" aria-controls="world-tab-7" aria-selected="false">Games</a>
+                                        <a className="nav-link" id="tab8" data-toggle="tab" href="/world-tab-8" role="tab" aria-controls="world-tab-8" aria-selected="false">Music</a>
+                                        <a className="nav-link" id="tab9" data-toggle="tab" href="/world-tab-9" role="tab" aria-controls="world-tab-9" aria-selected="false">Publishing</a>
                                     </div>
                                 </li>
                             </ul>

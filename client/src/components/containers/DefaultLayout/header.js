@@ -19,8 +19,8 @@ import { NavLink } from 'react-router-dom';
                         <h2><NavLink className="noUnderline"  to="/" style={{"fontSize": "42px"}}>Fund Raiser</NavLink></h2>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="/worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                         <div className="collapse navbar-collapse" id="worldNav">
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item active">
+                            <ul className="navbar-nav ml-auto" style={{"color" : "#ffffff!important"}}>
+                                <li className="nav-item">
                                     <NavLink className="nav-link" to="/">Home</NavLink>
                                 </li>
                         
@@ -40,7 +40,7 @@ import { NavLink } from 'react-router-dom';
                                         <NavLink className="dropdown-item" to="/regular">Catagory</NavLink>
                                         <NavLink className="dropdown-item" to="/regular">Single Blog</NavLink>
                                         <NavLink className="dropdown-item" to="/regular">Regular Page</NavLink>
-                                        <NavLink className="dropdown-item" to="/">Contact</NavLink>
+                                        <NavLink className="dropdown-item" to="/rr">Contact</NavLink>
                                     </div>
                                 </li>
                             </ul>
