@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import {  Route, Switch } from 'react-router-dom';
+import * as actions from  "../../common/actions"
+import {connect} from 'react-redux'
 
  class HomePage extends Component {
  
@@ -62,7 +64,7 @@ import React, { Component } from 'react';
                             <div className="tab-content" id="myTabContent">
 
                                 <div className="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
-                                    <div className="row">
+                                    {/* <div className="row">
                                         <div className="col-12 col-md-6">
                                             <div className="world-catagory-slider owl-carousel wow fadeInUpBig" data-wow-delay="0.1s">
 
@@ -173,7 +175,7 @@ import React, { Component } from 'react';
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="tab-pane fade" id="world-tab-2" role="tabpanel" aria-labelledby="tab2">
@@ -2150,19 +2152,15 @@ import React, { Component } from 'react';
   }
 }
 
-// function mapStateToProps(state){
-//  return {
-//   currentNetwork: state.setNetwork.network,
-//   mnemonic: state.walletGenerationAndDetails.mnemonic
-//  }
-// }
+function mapStateToProps(state){
+ return {
+ }
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     setNetwork: (network) => dispatch(actions.setNetwork(network))
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+  }
+}
 
-// export default connect(null, null)(DefaultLayout);
-export default HomePage
+export default connect(null, null)(HomePage);
 

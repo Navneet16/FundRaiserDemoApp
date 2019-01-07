@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Route, Switch , Redirect} from 'react-router-dom';
+import {  Route, Redirect} from 'react-router-dom';
 import Header from './header'
 import Footer from './footer'
 import {HomePage} from '../../home'
@@ -15,14 +15,12 @@ import {Contact} from '../../contact'
     return (
        <div> 
           <Header/>
-             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/project' component={Project} />
               <Route path='/blog' component={Blog} />
               <Route path='/regular' component={Regular} />
               <Route path='/contact' component={Contact} />
               <Redirect to='/' />
-            </Switch>
 
           <Footer/>
        </div> 
