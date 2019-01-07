@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import {  Route, Switch } from 'react-router-dom';
 import * as actions from  "../../common/actions"
 import {connect} from 'react-redux'
+import Arts from './arts'
 
  class HomePage extends Component {
  
@@ -64,118 +65,7 @@ import {connect} from 'react-redux'
                             <div className="tab-content" id="myTabContent">
 
                                 <div className="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
-                                    {/* <div className="row">
-                                        <div className="col-12 col-md-6">
-                                            <div className="world-catagory-slider owl-carousel wow fadeInUpBig" data-wow-delay="0.1s">
-
-                                                <div className="single-blog-post">
-                                                    <div className="post-thumbnail">
-                                                        <img src="img/blog-img/b1.jpg" alt=""/>
-                                                        <div className="post-cta"><a href="/">travel</a></div>
-                                                    </div>
-                                                    <div className="post-content">
-                                                        <a href="/" className="headline">
-                                                            <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                                                        </a>
-                                                        <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                                                        <div className="post-meta">
-                                                            <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="single-blog-post">
-                                                    <div className="post-thumbnail">
-                                                        <img src="img/blog-img/b2.jpg" alt=""/>
-                                                        <div className="post-cta"><a href="/">travel</a></div>
-                                                    </div>
-                                                    <div className="post-content">
-                                                        <a href="/" className="headline">
-                                                            <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                                                        </a>
-                                                        <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                                                        <div className="post-meta">
-                                                            <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="single-blog-post">
-                                                    <div className="post-thumbnail">
-                                                        <img src="img/blog-img/b3.jpg" alt=""/>
-                                                        <div className="post-cta"><a href="/">travel</a></div>
-                                                    </div>
-                                                    <div className="post-content">
-                                                        <a href="/" className="headline">
-                                                            <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                                                        </a>
-                                                        <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                                                        <div className="post-meta">
-                                                            <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-12 col-md-6">
-                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-                                                <div className="post-thumbnail">
-                                                    <img src="img/blog-img/b10.jpg" alt=""/>
-                                                </div>
-                                                <div className="post-content">
-                                                    <a href="/" className="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <div className="post-meta">
-                                                        <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.3s">
-                                                <div className="post-thumbnail">
-                                                    <img src="img/blog-img/b11.jpg" alt=""/>
-                                                </div>
-                                                <div className="post-content">
-                                                    <a href="/" className="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <div className="post-meta">
-                                                        <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.4s">
-                                                <div className="post-thumbnail">
-                                                    <img src="img/blog-img/b12.jpg" alt=""/>
-                                                </div>
-                                                <div className="post-content">
-                                                    <a href="/" className="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <div className="post-meta">
-                                                        <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.5s">
-                                                <div className="post-thumbnail">
-                                                    <img src="img/blog-img/b13.jpg" alt=""/>
-                                                </div>
-                                                <div className="post-content">
-                                                    <a href="/" className="headline">
-                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
-                                                    </a>
-                                                    <div className="post-meta">
-                                                        <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
+                                  <Arts/>
                                 </div>
 
                                 <div className="tab-pane fade" id="world-tab-2" role="tabpanel" aria-labelledby="tab2">
@@ -2154,6 +2044,7 @@ import {connect} from 'react-redux'
 
 function mapStateToProps(state){
  return {
+
  }
 }
 

@@ -3,21 +3,28 @@ import * as types from '../types';
 
 const INITIAL_STATE_PROJECT_INFO = {
 
-   arts : []
+    arts : [],
+    comicsIllustration : [],
+    designTech: [],
+    film: [],
+    foodCraft : [],
+    games : [],
+    music: [],
+    publishing:[]
 }
 
 export default function projectInfo(state = INITIAL_STATE_PROJECT_INFO, action){
     switch (action.type) {
-        case types.SET_FETCH_ART_PROJECTS:
-        return setArtProject(state, action.payload);
+        case types.SET_FETCH_PROJECTS:
+        return setProject(state, action.payload);
         default:
         return state;
     }
 }
 
-function setArtProject(state, payload){
+function setProject(state, payload){
     return {
         ...state,
-        arts : payload
+        [payload.category] : payload.data.data
     }
 }

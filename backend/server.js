@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 var helmet = require('helmet')
 
 
-app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
+app.use(cors());
 app.use(helmet());
 app.set('trust proxy', 1); // trust first proxy
 
@@ -32,4 +32,4 @@ app.use(cookieParser());
 app.use('/api', api);
 
 
-module.exports = app;
+app.listen(3001);
