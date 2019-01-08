@@ -16,8 +16,8 @@ import { NavLink } from 'react-router-dom';
             <div className="row">
                 <div className="col-12">
                     <nav className="navbar navbar-expand-lg">
-                        <h2><NavLink className="noUnderline"  to="/" style={{"fontSize": "42px"}}>Fund Raiser</NavLink></h2>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="/worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+                        <NavLink className="navbar-brand"  to="/">Fund Raiser</NavLink>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                         <div className="collapse navbar-collapse" id="worldNav">
                             <ul className="navbar-nav ml-auto" style={{"color" : "#ffffff!important"}}>
                                 <li className="nav-item">

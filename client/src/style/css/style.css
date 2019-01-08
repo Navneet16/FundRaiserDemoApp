@@ -307,14 +307,13 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  height: auto;
+  height: 61px;
   margin-top: 20px;
   left: 0;
   z-index: 300;
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms; }
   .header-area .navbar {
-    border-color: #ffffff;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
     height: 55px; }
@@ -343,7 +342,7 @@ img {
     margin-top: 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); }
     .header-area.sticky .navbar {
-      border-color:  #fff; }
+      border-color:  #938e94; }
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -356,7 +355,10 @@ img {
 @media only screen and (max-width: 767px) {
   #worldNav {
     background-color: #000000;
-    padding: 15px 15px 30px 15px; } }
+    padding: 15px 15px 30px 15px; 
+    margin-top: 14px;
+    }
+  }
 
 .dropdown-menu {
   border: none;
@@ -1273,3 +1275,43 @@ textarea:focus ~ .highlight {
           text-decoration: none!important;
           background-color: transparent;
       }
+      .carousel-caption{
+        right: 0!important;
+        left: 0!important;
+        bottom: 0!important;
+        position: relative!important;
+        background:  #938e94;
+      }   
+
+      .carousel-control.left{
+        background-image: none!important;
+      }
+      .carousel-control.right{
+        background-image: none!important;
+      }
+      .navbar {
+        position: relative!important;
+        display: flex!important;
+        justify-content: space-between!important;
+        padding: .5rem 1rem!important;
+    }
+    .navbar h2 a{
+      font-size: 42px;
+    }
+
+
+
+
+    @media only screen and (max-width: 767px) {
+      .header-area{
+        margin-top: 0px;
+        background-color: #938e94;
+
+      }
+      .navbar h2 a{
+        font-size: 30px;
+      }
+      .header-area {
+        height: auto;
+      }
+    }
