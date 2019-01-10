@@ -5,14 +5,14 @@ import {connect} from 'react-redux'
 import {Carousel} from 'react-bootstrap'
 import $ from 'jquery'
 
- class Arts extends Component {
+ class Food extends Component {
   constructor(props){
       super(props)
        this.changeStatus =  this.changeStatus.bind(this)
   }   
   componentDidMount(){
     // $(document).foundation();
-     this.props.fetch({category : 'arts'})
+     this.props.fetch({category : 'foods'})
     //  $(document).foundation();
 
 $(function() {
@@ -34,7 +34,7 @@ $(function() {
         <div className="col-12 col-md-12">
             <Carousel indicators={false}>
                 {
-                    this.props.arts.length > 0 &&  this.props.arts.map((project,i)=>{
+                    this.props.foods.length > 0 &&  this.props.foods.map((project,i)=>{
                     return(
                     <Carousel.Item key={i}>   
                             <img width={"100%"}  alt="900x500" src="img/blog-img/b1.jpg" />
@@ -42,7 +42,7 @@ $(function() {
                                 <div >
                                     <h3 className="projectname">{project.name}</h3>
                                     <p className="projectdescription">{project.description}</p>
-                                    <p className="projecttimeandcreator">By <a className="projectdescription post-author" href="/" >{project.creator}</a> on {project.createdOn}</p>
+                                    <p className="projecttimeandcreator">By <a className="projectdescription post-author" href="/">{project.creator}</a> on {project.createdOn}</p>
                                 </div>
                                 <div>
                                     <button onClick={this.changeStatus} className="button button-like">
@@ -66,7 +66,7 @@ $(function() {
 
 function mapStateToProps(state){
  return {
-     arts : state.projectInfo.arts
+     foods : state.projectInfo.foods
  }
 }
 
@@ -76,5 +76,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Arts);
+export default connect(mapStateToProps, mapDispatchToProps)(Food);
 

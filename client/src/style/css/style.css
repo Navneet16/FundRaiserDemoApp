@@ -1281,6 +1281,9 @@ textarea:focus ~ .highlight {
         bottom: 0!important;
         position: relative!important;
         background:  #938e94;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
       }   
 
       .carousel-control.left{
@@ -1315,3 +1318,101 @@ textarea:focus ~ .highlight {
         height: auto;
       }
     }
+
+
+    .button-like {
+      border: 2px solid #fff;
+      background-color: transparent;
+      text-decoration: none;
+      padding: 1rem;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      display: inline-block;
+      border-radius: 3rem;
+      color: #fff;
+      transition: all ease 0.4s;
+    }
+    
+    .button-like span {
+      margin-left: 0.5rem;
+    }
+    
+    .button-like .fa,
+    .button-like span {
+      transition: all ease 0.4s;
+    }
+    
+    .button-like:focus {
+      background-color: transparent;
+      outline: 0px;
+    }
+    
+    .button-like:focus .fa,
+    .button-like:focus span {
+      color: #fff;
+    }
+    
+    .button-like:hover {
+      border-color: #cc4b37;
+      background-color: transparent;
+    }
+    
+    .button-like:hover .fa,
+    .button-like:hover span {
+      color: #cc4b37;
+    }
+    
+    .liked {
+      background-color: #cc4b37;
+      border-color: #cc4b37;
+    }
+    
+    .liked .fa,
+    .liked span {
+      color: #fefefe;
+    }
+    
+    .liked:focus {
+      background-color: #cc4b37;
+    }
+    
+    .liked:focus .fa,
+    .liked:focus span {
+      color: #fefefe;
+    }
+    
+    .liked:hover {
+      background-color: #cc4b37;
+      border-color: #cc4b37;
+    }
+    
+    .liked:hover .fa,
+    .liked:hover span {
+      color: #fefefe;
+    }
+    
+    
+
+.projectname{
+  color: #FFFFFF;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 20px; 
+}
+
+.projectdescription{
+  color: #FFFFFF;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 14px; 
+ 
+}
+
+.projecttimeandcreator{
+  color: #FFFFFF;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 14px; 
+  margin-top: 20px;
+}

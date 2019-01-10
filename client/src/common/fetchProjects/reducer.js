@@ -4,13 +4,14 @@ import * as types from '../types';
 const INITIAL_STATE_PROJECT_INFO = {
 
     arts : [],
-    comicsIllustration : [],
-    designTech: [],
-    film: [],
-    foodCraft : [],
+    comics : [],
+    technology : [],
+    films: [],
+    foods : [],
     games : [],
     music: [],
-    publishing:[]
+    publishing:[],
+    crafts : []
 }
 
 export default function projectInfo(state = INITIAL_STATE_PROJECT_INFO, action){

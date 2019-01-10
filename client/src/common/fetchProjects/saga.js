@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 export function* fetchProjects(){
-    yield takeLatest( types.SAGA_FETCH_PROJECTS, fetchProject );
+    yield takeEvery( types.SAGA_FETCH_PROJECTS, fetchProject );
 }
 
 function* clearState(){
@@ -29,6 +29,6 @@ function fetchApi( category )
           category : category
        }).then(( info, err) => {
         if(err) reject({status: false, message : "Some error occured while fetching transaction history. Please try again later." });
-        else resolve( {status: true , data : info.data , category : category});
+        else resolve({status: true , data : info.data , category : category});
     })}
 )}
