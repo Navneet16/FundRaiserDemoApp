@@ -1,5 +1,6 @@
 require('dotenv').config()
 var express = require('express');
+var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -8,12 +9,19 @@ var cors = require('cors')
 var api = require('./routes/api');
 var app = express();
 var mongoose = require('mongoose');
+var session = require('express-session');
 var helmet = require('helmet')
 
 
 app.use(cors());
 app.use(helmet());
 app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+}));
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify',false);
@@ -32,4 +40,4 @@ app.use(cookieParser());
 app.use('/api', api);
 
 
-app.listen(3001);
+module.exports = app;

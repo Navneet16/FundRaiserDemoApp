@@ -15,3 +15,18 @@ export const fetchProjects = {
        }
     }
 }
+
+export const topLiked = {
+    fetchTopLikedProjects : () => {
+        return { 
+            type: types.SAGA_FETCH_TOP_LIKED_PROJECTS
+        }
+    },
+
+    setTopLikedProjects: (payload) => {
+       return {
+           type : types.SET_FETCHED_TOP_LIKED_PROJECTS,
+           payload : payload
+       }
+    }
+}

@@ -10,7 +10,7 @@ const INITIAL_STATE_PROJECT_INFO = {
     foods : [],
     games : [],
     music: [],
-    publishing:[],
+    publish:[],
     crafts : []
 }
 
