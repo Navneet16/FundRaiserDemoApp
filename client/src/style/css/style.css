@@ -486,6 +486,8 @@ img {
   padding-top: 30px; }
 
 .single-blog-post {
+  background-color: #7295ae!important;
+   
   position: relative;
   z-index: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -1415,4 +1417,12 @@ textarea:focus ~ .highlight {
   font-weight: 500;
   font-size: 14px; 
   margin-top: 20px;
+}
+.post-content-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.post-content-button{
+  margin-right: 15px;
 }

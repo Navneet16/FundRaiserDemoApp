@@ -4,6 +4,8 @@ import * as actions from  "../../common/actions"
 import {connect} from 'react-redux'
 import {Carousel} from 'react-bootstrap'
 import $ from 'jquery'
+import LikeButton from './likeButton'
+
 
  class Films extends Component {
   constructor(props){
@@ -45,10 +47,7 @@ $(function() {
                                     <p className="projecttimeandcreator">By <a className="projectdescription post-author" href="/">{project.creator}</a> on {project.createdOn}</p>
                                 </div>
                                 <div>
-                                    <button onClick={this.changeStatus} className="button button-like">
-                                        <i className="fa fa-heart"></i>
-                                        <span>Like</span>
-                                    </button>
+                                   <LikeButton/>
                                 </div>
                             </Carousel.Caption>
                         </Carousel.Item>
