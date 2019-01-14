@@ -25,7 +25,7 @@ import { NavLink } from 'react-router-dom';
                                 </li>
                         
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/project">Projects</NavLink>
+                                    <NavLink className="nav-link" to="/project">Explore</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/blog">Blogs</NavLink>

@@ -1,4 +1,5 @@
 var projectSchema = require('../models/projects.js');
+var setLayoutSchema = require('../models/setLayouts')
 
 class dataFetch {
     constructor(options) {
@@ -16,6 +17,8 @@ class dataFetch {
     getCategory() {
         return this.category;
     }
+
+
     // checkUser() {
     //     return new Promise((resolve, reject) => {
     //         userSchema
@@ -96,7 +99,7 @@ class dataFetch {
                 resolve({
                     status : true,
                     data : error,
-                    message : `Successfully Fetched ${that.category}`
+                    message : `Unable To Fetch ${that.category}`
                 })
               }  
          
@@ -157,6 +160,43 @@ class dataFetch {
           } 
        
         
+       })
+    }
+    fetchFeaturedCategory(){
+        return new Promise((resolve, reject) => {
+            try {
+               function  getRandom(arr, n) {
+                    var result = new Array(n),
+                        len = arr.length,
+                        taken = new Array(len);
+                    if (n > len)
+                        throw new RangeError("getRandom: more elements taken than available");
+                    while (n--) {
+                        var x = Math.floor(Math.random() * len);
+                        result[n] = arr[x in taken ? taken[x] : x];
+                        taken[x] = --len in taken ? taken[len] : len;
+                    }
+                    return result;
+                }
+                setLayoutSchema.setLayout.findOne({}).then(function(setLayoutResponse){
+                    projectSchema.project.find({subCategory : setLayoutResponse.featuredCategory}).then(function(projects){
+                        if(projects){
+                            return resolve({
+                                status : true,
+                                data : getRandom(projects,4),
+                                message : `Successfully fetched`
+                            })  
+                        }
+                    })
+                })
+              } catch (error) {
+                resolve({
+                    status : true,
+                    data : error,
+                    message : `Unable To Fetch`
+                })
+              }  
+         
        })
     }
 }

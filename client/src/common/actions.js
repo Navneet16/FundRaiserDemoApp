@@ -30,3 +30,18 @@ export const topLiked = {
        }
     }
 }
+
+export const featuredCategory = {
+    fetchFeaturedCategory : () => {
+        return { 
+            type: types.SAGA_FETCH_FEATURED_CATEGORY_PROJECTS
+        }
+    },
+
+    setFeaturedProjects: (payload) => {
+       return {
+           type : types.SET_FETCHED_FEATURED_CATEGORY_PROJECTS,
+           payload : payload
+       }
+    }
+}

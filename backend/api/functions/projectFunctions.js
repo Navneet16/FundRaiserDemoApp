@@ -19,7 +19,7 @@ class projectCategoryFunctions {
     createFetchObjectForCategory() {
         return new dataFetch({category: this.category})
    }
-   createFetchObjectForTopLiked() {
+   createFetchObject() {
     return new dataFetch()
   }
 
@@ -38,7 +38,7 @@ class projectCategoryFunctions {
     fetchTopLikedFromDb() {
         return new Promise(async(resolve, reject) => {
             var waitForFetchTopLiked = await this
-                .createFetchObjectForTopLiked()
+                .createFetchObject()
                 .fetchTopLiked();
             if (waitForFetchTopLiked.status) {
                 return resolve({status: waitForFetchTopLiked.status , data: waitForFetchTopLiked.data , message : waitForFetchTopLiked.message})
@@ -46,7 +46,19 @@ class projectCategoryFunctions {
                 return resolve({status: waitForFetchTopLiked.status, data: waitForFetchTopLiked.data, message: waitForFetchTopLiked.message})
             }
         })
-}
+    }
+    fetchFeaturedCategoryFromDb() {
+        return new Promise(async(resolve, reject) => {
+            var waitForFetchFeaturedCategory = await this
+                .createFetchObject()
+                .fetchFeaturedCategory();
+            if (waitForFetchFeaturedCategory.status) {
+                return resolve({status: waitForFetchFeaturedCategory.status , data: waitForFetchFeaturedCategory.data , message : waitForFetchFeaturedCategory.message})
+            } else {
+                return resolve({status: waitForFetchFeaturedCategory.status, data: waitForFetchFeaturedCategory.data, message: waitForFetchFeaturedCategory.message})
+            }
+        })
+    }
 }
 
 module.exports = projectCategoryFunctions;
