@@ -26,6 +26,9 @@ import LikeButton from './likeButton'
   changeStatus(event){
       event.target.classList.toggle("liked");
      }
+  componentWillUnmount(){
+        this.props.clear({category : 'crafts', data : []})
+  }     
   render() {
       return (
 
@@ -66,7 +69,9 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetch : (payload)=>{dispatch(actions.fetchProjects.fetchProjects(payload))}
+      fetch : (payload)=>{dispatch(actions.fetchProjects.fetchProjects(payload))},
+      clear : (payload)=>{dispatch(actions.clearState.clearProjects(payload))}
+
   }
 }
 

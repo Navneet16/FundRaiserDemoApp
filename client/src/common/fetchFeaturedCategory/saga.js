@@ -28,6 +28,6 @@ function fetchApi()
     {
         return new Promise((resolve, reject)=>{axios.get(`http://localhost:3001/api/fetchFeatured`).then(( info, err) => {
         if(err) reject({status: false, message : "Some error occured while fetching transaction history. Please try again later." });
-        else resolve({status: info.data.status , data : info.data.data});
+        else resolve({status: info.data.status , categoryType :info.data.category, data : info.data.data});
     })}
 )}

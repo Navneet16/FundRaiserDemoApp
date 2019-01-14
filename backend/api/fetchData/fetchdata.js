@@ -184,6 +184,7 @@ class dataFetch {
                             return resolve({
                                 status : true,
                                 data : getRandom(projects,4),
+                                category : setLayoutResponse.featuredCategory,
                                 message : `Successfully fetched`
                             })  
                         }

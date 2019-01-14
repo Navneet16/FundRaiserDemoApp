@@ -29,6 +29,9 @@ $(function() {
   changeStatus(event){
         //  event.target.classList.toggle("liked");
      }
+     componentWillUnmount(){
+        this.props.clear({category : 'music', data : []})
+    }      
   render() {
       return (
 
@@ -71,7 +74,9 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetch : (payload)=>{dispatch(actions.fetchProjects.fetchProjects(payload))}
+      fetch : (payload)=>{dispatch(actions.fetchProjects.fetchProjects(payload))},
+      clear : (payload)=>{dispatch(actions.clearState.clearProjects(payload))}
+
   }
 }
 

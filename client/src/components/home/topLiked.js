@@ -29,6 +29,9 @@ $(function() {
   changeStatus(event){
         //  event.target.classList.toggle("liked");
      }
+  componentWillUnmount(){
+        this.props.clear()
+  }    
   render() {
       return (
 
@@ -71,7 +74,9 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetch : ()=>{dispatch(actions.topLiked.fetchTopLikedProjects())}
+      fetch : ()=>{dispatch(actions.topLiked.fetchTopLikedProjects())},
+      clear : ()=>{dispatch(actions.clearState.clearTopLiked())}
+
   }
 }
 

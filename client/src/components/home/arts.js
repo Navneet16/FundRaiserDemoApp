@@ -14,20 +14,22 @@ import LikeButton from './likeButton'
   componentDidMount(){
     // $(document).foundation();
      this.props.fetch({category : 'arts'})
+
     //  $(document).foundation();
 
-$(function() {
-  $('.button-like')
-    .bind('click', function(event) {
-      $(".button-like").toggleClass("liked");
-    })
-});
-
-
-  }
-  changeStatus(event){
-        //  event.target.classList.toggle("liked");
-     }
+    $(function() {
+    $('.button-like')
+        .bind('click', function(event) {
+        $(".button-like").toggleClass("liked");
+        })
+     });
+    }
+    changeStatus(event){
+            //  event.target.classList.toggle("liked");
+    }
+    componentWillUnmount(){
+        this.props.clear({category : 'arts', data : []})
+    }   
   render() {
       return (
 
@@ -70,7 +72,9 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetch : (payload)=>{dispatch(actions.fetchProjects.fetchProjects(payload))}
+      fetch : (payload)=>{dispatch(actions.fetchProjects.fetchProjects(payload))},
+      clear : (payload)=>{dispatch(actions.clearState.clearProjects(payload))}
+
   }
 }
 

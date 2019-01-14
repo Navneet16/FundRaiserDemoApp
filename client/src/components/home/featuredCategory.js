@@ -28,23 +28,24 @@ $(function() {
   changeStatus(event){
         //  event.target.classList.toggle("liked");
      }
+     componentWillUnmount(){
+        this.props.clear()
+    } 
   render() {
       return (
         <div className="world-catagory-area mt-50">
         <ul className="nav nav-tabs" id="myTab2" role="tablist">
-            <li className="title">Featured Category : abcuuusasfasdfsfwfeve</li>
+            <li className="title">Featured Category : {this.props.categoryType ? this.props.categoryType.slice(0,1).toUpperCase()+this.props.categoryType.slice(1) : ""}</li>
         </ul>
         
         <div className="tab-content" id="myTabContent2">
         
             <div className="tab-pane fade show active" id="world-tab-10" role="tabpanel" aria-labelledby="tab10">
                 <div className="row">
-        
-
-                                        {
+                        {
                             this.props.featured.length > 0 &&  this.props.featured.map((project,i)=>{
                             return(
-                               <div className="col-12 col-md-6">
+                               <div className="col-12 col-md-6" key={i}>
 
                                     <div className="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                                     <div className="post-thumbnail">
@@ -66,13 +67,13 @@ $(function() {
                               </div>
 
                             )   
-                            })
+                         })
 
                         }
                 </div>
             </div>
         
-        </div>
+           </div>
         </div> 
     );
   }
@@ -80,13 +81,16 @@ $(function() {
 
 function mapStateToProps(state){
  return {
-     featured: state.featuredCategory.featuredCategory
+     featured: state.featuredCategory.featuredCategory,
+     categoryType : state.featuredCategory.categoryType
  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchFeatured : ()=>{dispatch(actions.featuredCategory.fetchFeaturedCategory())}
+    fetchFeatured : ()=>{dispatch(actions.featuredCategory.fetchFeaturedCategory())},
+    clear : ()=>{dispatch(actions.clearState.clearFeatured())}
+
   }
 }
 

@@ -1426,3 +1426,10 @@ textarea:focus ~ .highlight {
 .post-content-button{
   margin-right: 15px;
 }
+.recommended {
+  font-size: 18px!important;
+  color: #000000!important;
+  margin-bottom: 0!important;
+  margin-right: auto!important;
+  font-family: "Ubuntu", sans-serif!important;
+  font-weight: 700!important; }

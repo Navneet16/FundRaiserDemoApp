@@ -53,7 +53,7 @@ class projectCategoryFunctions {
                 .createFetchObject()
                 .fetchFeaturedCategory();
             if (waitForFetchFeaturedCategory.status) {
-                return resolve({status: waitForFetchFeaturedCategory.status , data: waitForFetchFeaturedCategory.data , message : waitForFetchFeaturedCategory.message})
+                return resolve({status: waitForFetchFeaturedCategory.status , data: waitForFetchFeaturedCategory.data , category : waitForFetchFeaturedCategory.category , message : waitForFetchFeaturedCategory.message})
             } else {
                 return resolve({status: waitForFetchFeaturedCategory.status, data: waitForFetchFeaturedCategory.data, message: waitForFetchFeaturedCategory.message})
             }

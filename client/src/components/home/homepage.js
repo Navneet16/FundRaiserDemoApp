@@ -13,9 +13,10 @@ import Music from './music.js'
 import Publishing from './publish'
 import TopLiked from './topLiked'
 import FeaturedCategory from './featuredCategory'
+import { bindActionCreators } from 'redux';
 
 class HomePage extends Component {
- 
+  
   render() {
     return (
       <div>  
@@ -156,8 +157,12 @@ class HomePage extends Component {
                     </div>
                 </div>
             </div>
-
+            <div className="recommended">
+                            <h3>Recommended For You</h3>
+            </div>
             <div className="row justify-content-center">
+
+
                 <div className="col-12 col-md-6 col-lg-4">
                     <div className="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
                         <div className="post-thumbnail">
@@ -178,6 +183,54 @@ class HomePage extends Component {
                     <div className="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.4s">
                         <div className="post-thumbnail">
                             <img src="img/blog-img/b5.jpg" alt=""/>
+                            <div className="post-content d-flex align-items-center justify-content-between">
+                                <div className="post-tag"><a href="/">travel</a></div>
+                                <a href="/" className="headline">
+                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                                </a>
+                                <div className="post-meta">
+                                    <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-md-6 col-lg-4">
+                    <div className="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.6s">
+                        <div className="post-thumbnail">
+                            <img src="img/blog-img/b6.jpg" alt=""/>
+                            <div className="post-content d-flex align-items-center justify-content-between">
+                                <div className="post-tag"><a href="/">travel</a></div>
+                                <a href="/" className="headline">
+                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                                </a>
+                                <div className="post-meta">
+                                    <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-md-6 col-lg-4">
+                    <div className="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.6s">
+                        <div className="post-thumbnail">
+                            <img src="img/blog-img/b6.jpg" alt=""/>
+                            <div className="post-content d-flex align-items-center justify-content-between">
+                                <div className="post-tag"><a href="/">travel</a></div>
+                                <a href="/" className="headline">
+                                    <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                                </a>
+                                <div className="post-meta">
+                                    <p><a href="/" className="post-author">Katy Liu</a> on <a href="/" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-md-6 col-lg-4">
+                    <div className="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.6s">
+                        <div className="post-thumbnail">
+                            <img src="img/blog-img/b6.jpg" alt=""/>
                             <div className="post-content d-flex align-items-center justify-content-between">
                                 <div className="post-tag"><a href="/">travel</a></div>
                                 <a href="/" className="headline">
@@ -334,16 +387,17 @@ class HomePage extends Component {
   }
 }
 
-function mapStateToProps(state){
- return {
+// function mapStateToProps(state){
+//  return {
 
- }
-}
+//  }
+// }
 
-const mapDispatchToProps = dispatch => {
-  return {
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       clearHomePageState : bindActionCreators(actions.clearState.clearHomePageState())
+//   }
+// }
 
 export default connect(null, null)(HomePage);
 

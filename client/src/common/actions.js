@@ -45,3 +45,22 @@ export const featuredCategory = {
        }
     }
 }
+
+export const clearState = {
+    clearProjects : (payload) => {
+        return { 
+            type: types.CLEAR_PROJECTS_STATE,
+            payload
+        }
+    },
+    clearFeatured : () => {
+        return {
+            type : types.CLEAR_FEATURED_STATE
+        }
+    },
+    clearTopLiked : () => {
+        return {
+            type : types.CLEAR_TOP_LIKED_STATE
+        }
+    }
+}

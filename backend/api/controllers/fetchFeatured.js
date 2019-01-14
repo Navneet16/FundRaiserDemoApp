@@ -3,7 +3,6 @@ var getFeaturedFunctions = require('../functions/projectFunctions.js')
 module.exports = {
 
     getFetchFeatured :async function (req, res) {
-        console.log('ksdsdsd')
                try {
                     var featuredCategoryToFetch = new getFeaturedFunctions()
                     await featuredCategoryToFetch.fetchFeaturedCategoryFromDb().then(function(fetchCategoryToFetchDbResponse){
@@ -11,6 +10,7 @@ module.exports = {
                           return  res.send({
                                 status : fetchCategoryToFetchDbResponse.status,
                                 data : fetchCategoryToFetchDbResponse.data,
+                                category : fetchCategoryToFetchDbResponse.category,
                                 message : fetchCategoryToFetchDbResponse.message
                             })
             
