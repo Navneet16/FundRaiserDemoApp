@@ -7,9 +7,10 @@ import {Project} from '../../Projects'
 import {Blog} from '../../blog'
 import {Regular} from '../../regular'
 import {Contact} from '../../contact'
+import {SignIn} from '../../user'
+
  
- 
- class DefaultLayout extends Component {
+class DefaultLayout extends Component {
 
   render() {
     return (
@@ -20,8 +21,8 @@ import {Contact} from '../../contact'
               <Route path='/blog' component={Blog} />
               <Route path='/regular' component={Regular} />
               <Route path='/contact' component={Contact} />
+              <Route path='/signin' component={SignIn} />
               <Redirect to='/' />
-
           <Footer/>
        </div> 
     );

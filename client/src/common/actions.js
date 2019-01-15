@@ -64,3 +64,12 @@ export const clearState = {
         }
     }
 }
+
+export const user = {
+    changeUserState : (payload) => {
+        return { 
+            type: types.CHANGE_USER_STATE,
+            payload
+        }
+    }
+}

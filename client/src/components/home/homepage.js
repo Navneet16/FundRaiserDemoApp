@@ -20,7 +20,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>  
- 
+         
         <div className="height-400" style={{"backgroundColor" : "#7395AE" }}>
                 <div className="container h-100">
                     <div className="row h-100 align-items-center justify-content-center">
