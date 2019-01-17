@@ -1,4 +1,4 @@
-import { put, takeEvery , takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
 import * as types from '../types';
 import * as actions from '../actions';
@@ -7,10 +7,6 @@ import axios from 'axios'
 
 export function* fetchFeaturedProjects(){
     yield takeEvery( types.SAGA_FETCH_FEATURED_CATEGORY_PROJECTS, fetchFeaturedProject );
-}
-
-function* clearState(){
-    // yield put(actions.generateMnemonic.clearResponse());
 }
 
 function* fetchFeaturedProject(action){

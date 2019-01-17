@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Route, Redirect} from 'react-router-dom';
+import {  Route, Redirect, Switch} from 'react-router-dom';
 import Header from './header'
 import Footer from './footer'
 import {HomePage} from '../../home'
@@ -9,15 +9,18 @@ import {Regular} from '../../regular'
 import {Contact} from '../../contact'
 import {SignIn} from '../../user'
 import {connect} from 'react-redux'
+import * as actions from  "../../../common/actions"
 
 
  
 class DefaultLayout extends Component {
 
+
   render() {
     return (
        <div> 
           <Header/>
+            <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/project' component={Project} />
               <Route path='/blog' component={Blog} />
@@ -25,6 +28,7 @@ class DefaultLayout extends Component {
               <Route path='/contact' component={Contact} />
               {!this.props.loginStatus && <Route path='/signin' component={SignIn} />}
               <Redirect to='/' />
+             </Switch> 
           <Footer/>
        </div> 
     );
@@ -40,7 +44,9 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = dispatch => {
   return {
+    changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
+    setUserDetailsForGoogleLogin : (payload)=>{dispatch(actions.user.setUserDetails(payload))}
   }
 }
 
-export default connect(mapStateToProps, null)(DefaultLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);

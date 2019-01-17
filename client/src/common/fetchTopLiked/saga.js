@@ -1,4 +1,4 @@
-import { put, takeEvery , takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
 import * as types from '../types';
 import * as actions from '../actions';
@@ -9,9 +9,7 @@ export function* fetchTopLiked(){
     yield takeEvery( types.SAGA_FETCH_TOP_LIKED_PROJECTS, fetchTopLikedProjects );
 }
 
-function* clearState(){
-    // yield put(actions.generateMnemonic.clearResponse());
-}
+
 
 function* fetchTopLikedProjects(action){
     try{

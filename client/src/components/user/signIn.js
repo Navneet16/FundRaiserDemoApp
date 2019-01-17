@@ -2,41 +2,58 @@ import React, { Component } from 'react';
 // import {  Route, Switch } from 'react-router-dom';
 import * as actions from  "../../common/actions"
 import {connect} from 'react-redux'
-import { GoogleLogin , GoogleLogout } from 'react-google-login';
-import {Carousel} from 'react-bootstrap'
 import $ from 'jquery'
-const clientId = '1078969805161-6bhv7n6pa83jc5vhi33b4bqr2sddflju.apps.googleusercontent.com'
-                                            
+import StyledFirebaseAuth from 'react-firebaseui/FirebaseAuth';
+// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import firebase from '../../common/firebase/firebase'
+
+
 
  class SignIn extends Component {
-    constructor(props){
-        super(props)
-         this.success =  this.success.bind(this)
-         this.error =  this.error.bind(this)
-         this.loading =  this.loading.bind(this)
-         this.logout =  this.logout.bind(this)
- } 
+
+    uiConfig = {
+            signInFlow: "popup",
+            signInOptions: [
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                firebase.auth.GithubAuthProvider.PROVIDER_ID,
+            ],
+            callbacks: {
+                signInSuccess: () => false
+            }
+    }
 
 
-    success(e){
-        this.props.changeUserState({
-            status : true
+    componentDidMount(){
+    $('html, body').animate({scrollTop: 0}, 'fast');
+    var that = this
+
+        firebase.auth().onAuthStateChanged(user => {
+            if(user && that.props.location.pathname === '/signin'){
+                this.props.changeUserState({
+                    status : true
+                })
+                this.props.setUserDetailsForGoogleLogin({
+                userName : user.displayName,
+                userEmail : user.email
+            })
+     
+                that.props.history.replace('/')
+
+            }else{
+              if(that.props.location.pathname === '/signin'){
+
+                    this.props.changeUserState({
+                        status : null
+                    })
+                    this.props.setUserDetailsForGoogleLogin({
+                    userName : null,
+                    userEmail : null
+                })
+              } 
+            }
         })
-        this.props.setUserDetailsForGoogleLogin({
-            userName : e.w3.ig,
-            userEmail : e.w3.U3
-        })
-        this.props.history.replace("/")
-      }
-      error(e){
-        console.log(e,"error")
-      }
-      loading(e){
-        console.log(e,"loading")
-      }
-      logout(e){
-        console.log(e,"logout")
-      }
+    }
   render() {
       return ( 
         <div>    
@@ -76,25 +93,17 @@ const clientId = '1078969805161-6bhv7n6pa83jc5vhi33b4bqr2sddflju.apps.googleuser
                         </div>
 
                          <div className="social-link">
-                            <GoogleLogin
-                            clientId={clientId}
-                            scope="https://www.googleapis.com/auth/analytics"
-                            onSuccess={this.success}
-                            onFailure={this.error}
-                            onRequest={this.loading}
-                            offline={false}
-                            approvalPrompt="force"
-                            responseType="id_token"
-                            isSignedIn
-                            theme="dark"o
-                            // disabled
-                            // prompt="consent"
-                            // className='button'
-                            // style={{ color: 'red' }}
-                            >
-                            <span style={{display: 'none'}}>Login with Google</span>
-                            </GoogleLogin>
-                        </div>
+                     
+                        </div>  
+                        <div>
+                                    
+                                           
+                            <StyledFirebaseAuth
+                                uiConfig={this.uiConfig}
+                                firebaseAuth={firebase.auth()}
+                            />
+                             
+                        </div>      
                     </div>
                 </div>
             </div>
@@ -113,9 +122,8 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetch : ()=>{dispatch(actions.topLiked.fetchTopLikedProjects())},
-      changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
       clear : ()=>{dispatch(actions.clearState.clearTopLiked())},
+      changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
       setUserDetailsForGoogleLogin : (payload)=>{dispatch(actions.user.setUserDetails(payload))}
    }
 }

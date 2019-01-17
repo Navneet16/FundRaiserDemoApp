@@ -3,10 +3,6 @@ import * as types from '../types';
 const INITIAL_STATE_USER_INFO = {
     
     loginStatus : null,
-    loginWithGoogle : null,
-    loginWithFacebook : null,
-    loginWithGithub : null,
-    normalLogin : null,
     userName : null,
     userEmail : null,
     Messages : null,
@@ -30,7 +26,6 @@ function setUserState(state, payload){
     return {
         ...state,
         loginStatus : payload.status ,
-        loginWithGoogle : payload.status
     }
 }
 

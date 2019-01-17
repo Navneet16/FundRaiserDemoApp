@@ -13,10 +13,38 @@ import Music from './music.js'
 import Publishing from './publish'
 import TopLiked from './topLiked'
 import FeaturedCategory from './featuredCategory'
-import { bindActionCreators } from 'redux';
+import $ from 'jquery'
+import firebase from '../../common/firebase/firebase'
+
 
 class HomePage extends Component {
-  
+ 
+
+  componentDidMount(){
+    $('html, body').animate({scrollTop: 0}, 'fast');
+    firebase.auth().onAuthStateChanged(user => {
+        if(user){
+
+            this.props.changeUserState({
+                status : true
+            })
+            this.props.setUserDetailsForGoogleLogin({
+            userName : user.displayName,
+            userEmail : user.email
+        })
+      
+            // that.forceUpdate()
+        }else{
+                this.props.changeUserState({
+                    status : null
+                })
+                this.props.setUserDetailsForGoogleLogin({
+                userName : null,
+                userEmail : null
+            })
+        }
+    })
+  }
   render() {
     return (
       <div>  
@@ -387,17 +415,21 @@ class HomePage extends Component {
   }
 }
 
-// function mapStateToProps(state){
-//  return {
+function mapStateToProps(state){
+ return {
+    loginStatus: state.User.loginStatus,
+    userEmail : state.User.userEmail,
+    userName : state.User.userName
+ }
+}
 
-//  }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+      changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
+      setUserDetailsForGoogleLogin : (payload)=>{dispatch(actions.user.setUserDetails(payload))}
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//       clearHomePageState : bindActionCreators(actions.clearState.clearHomePageState())
-//   }
-// }
+  }
+}
 
-export default connect(null, null)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import {  Route, Switch } from 'react-router-dom';
 import * as actions from  "../../common/actions"
 import {connect} from 'react-redux'
-import {Carousel} from 'react-bootstrap'
 import $ from 'jquery'
                                             
 import LikeButton from './likeButton'
