@@ -1,10 +1,12 @@
 var projectSchema = require('../models/projects.js');
 var setLayoutSchema = require('../models/setLayouts')
+var userSchema = require('../models/user')
 
 class dataFetch {
     constructor(options) {
         const defaults = {
-            category: ""
+            category: "",
+            email : ""
         };
         const populated = Object.assign(defaults, options);
         for (const key in populated) {
@@ -19,66 +21,66 @@ class dataFetch {
     }
 
 
-    // checkUser() {
-    //     return new Promise((resolve, reject) => {
-    //         userSchema
-    //             .user
-    //             .findOne({email: this.email})
-    //             .then(function (result) {
-    //                 if (result != null) {
-    //                     resolve(true)
-    //                 } else {
-    //                     resolve(false)
-    //                 }
-    //             })
-    //     })
-    // }
-    // checkUserEmailActivation() {
-    //     return new Promise((resolve, reject) => {
-    //         userSchema
-    //             .user
-    //             .findOne({email: this.email})
-    //             .then(function (result) {
-    //                 if (!result.status) {
-    //                     resolve(false)
-    //                 } else {
-    //                     resolve(true)
-    //                 }
-    //             })
-    //     })
-    // }
-    // checkUserJwtToken() {
-    //     return new Promise((resolve, reject) => {
-    //         var that = this
-    //         jwt.verify(this.jwtToken, process.env.JWTSECRET, function (err, decoded) {
-    //             if (decoded) {
-    //                 userSchema
-    //                     .user
-    //                     .findOne({_id: decoded.id})
-    //                     .then((result) => {
-    //                         result
-    //                             .jwtTokenCreated
-    //                             .forEach((element, index) => {
+    checkUser() {
+        return new Promise((resolve, reject) => {
+            userSchema
+                .user
+                .findOne({email: this.email})
+                .then(function (result) {
+                    if (result != null) {
+                        resolve(true)
+                    } else {
+                        resolve(false)
+                    }
+                })
+        })
+    }
+    checkUserEmailActivation() {
+        return new Promise((resolve, reject) => {
+            userSchema
+                .user
+                .findOne({email: this.email})
+                .then(function (result) {
+                    if (!result.status) {
+                        resolve(false)
+                    } else {
+                        resolve(true)
+                    }
+                })
+        })
+    }
+    checkUserJwtToken() {
+        return new Promise((resolve, reject) => {
+            var that = this
+            jwt.verify(this.jwtToken, process.env.JWTSECRET, function (err, decoded) {
+                if (decoded) {
+                    userSchema
+                        .user
+                        .findOne({_id: decoded.id})
+                        .then((result) => {
+                            result
+                                .jwtTokenCreated
+                                .forEach((element, index) => {
 
-    //                                 if (result.jwtTokenCreated.length - 1 == index) {
-    //                                     if (element.token === that.jwtToken) {
-    //                                         return resolve({status: true})
-    //                                     } else {
-    //                                         return resolve({status: false, message: "Unauthorized Access"})
-    //                                     }
-    //                                 } else if (element.token === that.jwtToken) {
-    //                                     return resolve({status: true})
-    //                                 }
-    //                             });
-    //                     })
-    //             } else {
-    //                 return resolve({status: false, message: err})
-    //             }
+                                    if (result.jwtTokenCreated.length - 1 == index) {
+                                        if (element.token === that.jwtToken) {
+                                            return resolve({status: true})
+                                        } else {
+                                            return resolve({status: false, message: "Unauthorized Access"})
+                                        }
+                                    } else if (element.token === that.jwtToken) {
+                                        return resolve({status: true})
+                                    }
+                                });
+                        })
+                } else {
+                    return resolve({status: false, message: err})
+                }
 
-    //         })
+            })
 
-    //     })
-    // }
+        })
+    }
     fetchCategory(){
         return new Promise((resolve, reject) => {
             try {
