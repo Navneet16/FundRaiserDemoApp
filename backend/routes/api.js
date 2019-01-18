@@ -5,6 +5,7 @@ var topLiked = require('../api/controllers/topLiked.js')
 var fetchFeatured = require('../api/controllers/fetchFeatured.js')
 var userSchema = require('../api/models/user.js')
 var userSignUp = require('../api/controllers/userSignup.js')
+var userThirdPartyLogin = require('../api/controllers/thirdPartyLogin')
 var userLogin = require('../api/controllers/userLogin.js')
 
 var getIp = function(req , res , next){
@@ -20,6 +21,7 @@ var getIp = function(req , res , next){
 router.post('/fetch', category.getCategoryData)
 router.get('/fetchTopLikedProjects' , topLiked.getTopLiked)
 router.get('/fetchFeatured' , fetchFeatured.getFetchFeatured )
+router.post('/thirdPartyLogin' , userThirdPartyLogin.register )
 router.post('/register', userSignUp.register)
 
 

@@ -3,111 +3,75 @@ var userSignupFunctions = require('../functions/userSignupFunctions.js')
 var emailActivationFunctions = require('../functions/emailActivationFunctions.js')
 
 register = async (req, res, next) => {
-
+   
     var email = (req.body.email).toLowerCase()
     var password = req.body.password
     var confirmPassword = req.body.confirmPassword
-    var thirdPartyLogin =  req.body.thirdPartyLogin
 
-    if(thirdPartyLogin){
-        if (email == '' || email == undefined || email == null) {
-            return res.send({
-                status: false,
-                message: "Enter Email"
-            })
-        }
-    }else{
-        if (email == '' || email == undefined || email == null) {
-            return res.send({
-                status: false,
-                message: "Enter Email"
-            })
-        }
-        if (password == '' || password == undefined || password == null) {
-            return res.send({
-                status: false,
-                message: "Enter Password"
-            })
-        }
-        if (password.length < 8) {
-            return res.send({
-                status: false,
-                message: "Enter Password of min 8 char"
-            })
-        }
-        if (confirmPassword == '' || confirmPassword == undefined || confirmPassword == null) {
-            return res.send({
-                status: false,
-                message: "Enter ConfirmPassword"
-            })
-        }
-        if (confirmPassword != password) {
-            return res.send({
-                status: false,
-                message: "Password and ConfirmPassword do not Match"
-            })
-        }
-    }
-
-
-    if(thirdPartyLogin){
-        var userCreated = new userSignupFunctions({
-            email: email,
-            thirdPartyLogin : true
-        })
-    }else{
-                // Creating user 
-        var emailerToken = email + randomstring.generate({
-            length: 20,
-            charset: 'alphanumeric'
-        });
-        var linkExpires = Date.now() + 86400000; //24 Hours
-
-        var userCreated = new userSignupFunctions({
-            email: email,
-            password: password,
-            confirmPassword: confirmPassword,
-            emailerToken: emailerToken,
-            emailerPreText: process.env.EMAILER_PRETEXT,
-            linkExpires: linkExpires
+    if (email == '' || email == undefined || email == null) {
+        return res.send({
+            status: false,
+            message: "Enter Email"
         })
     }
+    if (password == '' || password == undefined || password == null) {
+        return res.send({
+            status: false,
+            message: "Enter Password"
+        })
+    }
+    if (password.length < 8) {
+        return res.send({
+            status: false,
+            message: "Enter Password of min 8 char"
+        })
+    }
+    if (confirmPassword == '' || confirmPassword == undefined || confirmPassword == null) {
+        return res.send({
+            status: false,
+            message: "Enter ConfirmPassword"
+        })
+    }
+    if (confirmPassword != password) {
+        return res.send({
+            status: false,
+            message: "Password and ConfirmPassword do not Match"
+        })
+    }
+
+    // Creating user 
+    var emailerToken = email + randomstring.generate({
+        length: 20,
+        charset: 'alphanumeric'
+      });
+    var linkExpires = Date.now() + 86400000; //24 Hours
+    var userCreated = new userSignupFunctions({
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+        emailerToken: emailerToken,
+        emailerPreText: process.env.EMAILER_PRETEXT,
+        linkExpires: linkExpires
+    })
      await userCreated.checkExistingUser().then(async function(checkUserResponse) {
         if (checkUserResponse.status) {
             var getNewUserObject = await userCreated.getNewUser()
             if (getNewUserObject.status) {
                 var saveUser = await userCreated.saveUser(getNewUserObject.newData)
                 if (saveUser.status) {
-                      if(thirdPartyLogin){
-                         await userCreated.sendRegistrationMailThirdParty().then(async function(thirdPartyLoginResponse){
-                        if(thirdPartyLoginResponse.status){
-                           res.send({
-                               status: thirdPartyLoginResponse.status,
-                               message: thirdPartyLoginResponse.message
-                           })
-                        }else{
-                           res.send({
-                               status: thirdPartyLoginResponse.status,
-                               message: thirdPartyLoginResponse.message
-                           })
-                        }
-                     })
+                    var sendMail = await userCreated.sendRegistrationMail()
+                    if (sendMail.status) {
+                        res.send({
+                            status: sendMail.status,
+                            message: sendMail.message
+                        })
 
-                    }else{
-                        var sendMail = await userCreated.sendRegistrationMail()
-                        if (sendMail.status) {
-                            res.send({
-                                status: sendMail.status,
-                                message: sendMail.message
-                            })
-    
-                        } else {
-                            res.send({
-                                status: sendMail.status,
-                                message: sendMail.message
-                            })
-    
-                        }
+                    } else {
+                        res.send({
+                            status: sendMail.status,
+                            message: sendMail.message
+                        })
+
                     }
                 } else {
                     res.send({

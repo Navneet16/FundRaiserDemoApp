@@ -5,11 +5,9 @@ import {connect} from 'react-redux'
 import $ from 'jquery'
 import StyledFirebaseAuth from 'react-firebaseui/FirebaseAuth';
 // import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import firebase from '../../common/firebase/firebase'
+import firebase from 'firebase'
 
-
-
- class SignIn extends Component {
+class SignIn extends Component {
 
     uiConfig = {
             signInFlow: "popup",
@@ -25,34 +23,9 @@ import firebase from '../../common/firebase/firebase'
 
 
     componentDidMount(){
+
+        
     $('html, body').animate({scrollTop: 0}, 'fast');
-    var that = this
-
-        firebase.auth().onAuthStateChanged(user => {
-            if(user && that.props.location.pathname === '/signin'){
-                this.props.changeUserState({
-                    status : true
-                })
-                this.props.setUserDetailsForGoogleLogin({
-                userName : user.displayName,
-                userEmail : user.email
-            })
-     
-                that.props.history.replace('/')
-
-            }else{
-              if(that.props.location.pathname === '/signin'){
-
-                    this.props.changeUserState({
-                        status : null
-                    })
-                    this.props.setUserDetailsForGoogleLogin({
-                    userName : null,
-                    userEmail : null
-                })
-              } 
-            }
-        })
     }
   render() {
       return ( 
@@ -124,7 +97,7 @@ const mapDispatchToProps = dispatch => {
   return {
       clear : ()=>{dispatch(actions.clearState.clearTopLiked())},
       changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
-      setUserDetailsForGoogleLogin : (payload)=>{dispatch(actions.user.setUserDetails(payload))}
+      setUserDetailsForThirdPartyLogin : (payload)=>{dispatch(actions.user.regsterUserDetails(payload))}
    }
 }
 

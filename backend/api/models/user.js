@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var userSchemas = new Schema({
         name :  { type: String  },
-        email :  { type: String  },
+        email :  { type: String , unique: true },
         password :  { type: String  },
         thirdPartyLogin :  { type: Boolean },
         projectCount : {type:Number},
@@ -20,6 +20,7 @@ var userSchemas = new Schema({
         photo : {type : String },
         lastLogin      : [[]],
         jwtTokenCreated: [{}],
+        thirdPartyToken: [{}],
         time: { type: Date, default: Date.now },
         status: { type: Boolean, default: false },
         emailerToken: { type: String, default: null },

@@ -2,11 +2,41 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as actions from  "../../../common/actions"
 import {connect} from 'react-redux'
-import firebase from '../../../common/firebase/firebase'
+import firebase from 'firebase'
+
+
+firebase.initializeApp({
+    apiKey: "AIzaSyAkXmJezXTsVLlN7v4iTQyEiZ1GPY_8VvU",
+    authDomain: "fundraiser-1547536034572.firebaseapp.com"
+})
 
 
 
  class Header extends Component {
+ componentDidMount(){
+    firebase.auth().onAuthStateChanged(user => {
+
+        if(user){
+
+            this.props.changeUserState({
+                status : true
+            })
+         this.props.setUserDetailsForThirdPartyLogin({
+            userEmail : user.email,
+            token : user.ra
+          })
+      
+            // that.forceUpdate()
+        }else{
+                this.props.changeUserState({
+                    status : null
+                })
+                this.props.setUserDetailsForThirdPartyLogin({
+                userEmail : null
+            })
+        }
+    })
+ }    
   render() {
     return (
       <div>  
@@ -85,7 +115,7 @@ function mapStateToProps(state){
 const mapDispatchToProps = dispatch => {
   return {
     changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
-    setUserDetailsForGoogleLogin : (payload)=>{dispatch(actions.user.setUserDetails(payload))}
+    setUserDetailsForThirdPartyLogin : (payload)=>{dispatch(actions.thirdPartyLogin.thirdPartyUser(payload))}
   }
 }
 

@@ -24,8 +24,7 @@ app.use(session({
 }));
 
 mongoose.Promise = global.Promise;
-mongoose.set('useFindAndModify',false);
-mongoose.connect('mongodb://localhost:27017/fundRaise', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/fundRaise', {   useCreateIndex: true, useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

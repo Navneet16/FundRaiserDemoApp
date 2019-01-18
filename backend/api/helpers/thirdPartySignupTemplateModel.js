@@ -6,7 +6,7 @@ function dataThirdParty(emailn){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Open:400,300,700,600' rel='stylesheet' type='text/css'>
     <head>
-    <title>Altradex</title>
+    <title>FundRaiser</title>
     <style type="text/css">
         div, p, a, li, td {
             -webkit-text-size-adjust:none;
@@ -222,7 +222,7 @@ function dataThirdParty(emailn){
                                                                                          <td class="m_4585596968787092300hide" height="20">&nbsp;</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                         <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332" class="m_4585596968787092300smallfont">If you did not sign up to the ALTRADEX Exchange, please ignore this email and your email will not be used for Signup.</td>
+                                                                                         <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332" class="m_4585596968787092300smallfont">If you did not sign up to the FundRaiser Exchange, please ignore this email and your email will not be used for Signup.</td>
                                                                                          <td class="m_4585596968787092300hide" width="23">&nbsp;</td>
                                                                                     </tr>
                                                                                     <tr>
@@ -247,7 +247,7 @@ function dataThirdParty(emailn){
                                                                                     </tr>
                                                                                     <tr>
                                                                                          <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332">
-                                                                                           ALTRADEX Team
+                                                                                           FundRaiser Team
                                                                                          </td>
                                                                                     </tr>
                                                                                     <tr>
@@ -289,7 +289,7 @@ function dataThirdParty(emailn){
                             <td height="29">&nbsp;</td>
                         </tr>
                         <tr>
-                                <td align="center" style="font:11px Helvetica,Arial,sans-serif;color:#000000">© 2018, All rights reserved </td>
+                                <td align="center" style="font:11px Helvetica,Arial,sans-serif;color:#000000">© ${new Date().getFullYear()}, All rights reserved </td>
                         </tr>
                          <tr>
                             <td height="29">&nbsp;</td>

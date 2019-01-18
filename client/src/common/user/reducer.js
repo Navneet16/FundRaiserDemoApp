@@ -5,6 +5,7 @@ const INITIAL_STATE_USER_INFO = {
     loginStatus : null,
     userName : null,
     userEmail : null,
+    userToken : null,
     Messages : null,
     activity : null,
     backedProjects : null,
@@ -32,7 +33,7 @@ function setUserState(state, payload){
 function setUserDetails(state, payload){
     return {
         ...state,
-        userName : payload.userName,
-        userEmail : payload.userEmail
+        userEmail : payload.userEmail,
+        userToken : payload.userToken
     }
 }

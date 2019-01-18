@@ -14,36 +14,17 @@ import Publishing from './publish'
 import TopLiked from './topLiked'
 import FeaturedCategory from './featuredCategory'
 import $ from 'jquery'
-import firebase from '../../common/firebase/firebase'
+// import firebase from 'firebase'
 
 
 class HomePage extends Component {
  
 
   componentDidMount(){
-    $('html, body').animate({scrollTop: 0}, 'fast');
-    firebase.auth().onAuthStateChanged(user => {
-        if(user){
 
-            this.props.changeUserState({
-                status : true
-            })
-            this.props.setUserDetailsForGoogleLogin({
-            userName : user.displayName,
-            userEmail : user.email
-        })
-      
-            // that.forceUpdate()
-        }else{
-                this.props.changeUserState({
-                    status : null
-                })
-                this.props.setUserDetailsForGoogleLogin({
-                userName : null,
-                userEmail : null
-            })
-        }
-    })
+
+    $('html, body').animate({scrollTop: 0}, 'fast');
+
   }
   render() {
     return (
@@ -426,7 +407,7 @@ function mapStateToProps(state){
 const mapDispatchToProps = dispatch => {
   return {
       changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
-      setUserDetailsForGoogleLogin : (payload)=>{dispatch(actions.user.setUserDetails(payload))}
+      setUserDetailsForThirdPartyLogin : (payload)=>{dispatch(actions.thirdPartyLogin.thirdPartyUser(payload))}
 
   }
 }

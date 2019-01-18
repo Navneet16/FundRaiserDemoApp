@@ -72,9 +72,18 @@ export const user = {
             payload
         }
     },
+
     setUserDetails : (payload) => {
         return{
             type : types.SET_USER_DETAILS,
+            payload
+        }
+    }
+}
+export const thirdPartyLogin ={
+    thirdPartyUser : (payload) => {
+        return{
+            type : types.SAGA_REGISTER_USER_DETAILS_THIRD_PARTY_LOGIN,
             payload
         }
     }

@@ -1,7 +1,7 @@
 var userSchema = require('../models/user');
 var data = require('../helpers/signupTemplateModel.js')
-var dataThirdParty = require('../helpers/thirdPartySignupTemplateModel')
-var nodemailer = require('nodemailer');
+var SparkPost = require('sparkpost');
+var client = new SparkPost('a714da601b5193007d78ad1612fd341367606d9c');
 
 class userSignupFunctions {
     constructor(options) {
@@ -12,9 +12,7 @@ class userSignupFunctions {
          emailerToken : "" ,
          emailerPreText : "",
          linkExpires : "",
-         newUser : "",
-         thirdPartyLogin : ""
-
+         newUser : ""
         };
         const populated = Object.assign(defaults, options);
         for (const key in populated) {
@@ -100,83 +98,37 @@ class userSignupFunctions {
     }
      sendRegistrationMail(){
        return new Promise((resolve , reject)=>{
-            var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: 'noreplytestmailservices@gmail.com',
-                    pass: 'timus1993'
-                }
-            });
-
-            var mailOptions = {
-                from:	'noreplytestmailservices@gmail.com',
-                to:		req.body.email,
-                subject:'FundRaiser Account Activation',
-                html:	 data(this.email, this.emailerPreText, this.emailerToken)
-            };
-
-            transporter.sendMail(mailOptions, function(error, mailsent){
-                if (error) {
-                    if (err.errors[0].code == 5002) {
-                        resolve({
-                              status: false,
-                              message: 'Enter a Valid Email'
-                          });
-                      }
-                      resolve({
-                          status: false,
-                          message: 'Registration could not procced at this time, Please try again later!'
-                      });
-                } else {
-                    resolve({
-                        status: true,
-                        message: 'Registration Done ! A mail has been sent to your id' + this.email
+           client.transmissions.send({
+                content: {
+                    from: process.env.NO_REPLY_MAIL,
+                    subject: 'Exchange Account Activation',
+                    html: data(this.email, this.emailerPreText, this.emailerToken)
+                },
+                recipients: [{
+                    address: this.email
+                }]
+            })
+            .then(data => {
+                resolve({
+                    status: true,
+                    message: 'Registration Done ! A mail has been sent to your id' + this.email
+                });
+            })
+            .catch(err => {
+                if (err.errors[0].code == 5002) {
+                  resolve({
+                        status: false,
+                        message: 'Enter a Valid Email'
                     });
                 }
-            });
-
-
-
+                resolve({
+                    status: false,
+                    message: 'Registration could not procced at this time, Please try again later!'
+                });
+            }); 
                
          })
     }
-    sendRegistrationMailThirdParty(){
-        return new Promise((resolve , reject)=>{
-            var that = this
-             var transporter = nodemailer.createTransport({
-                 service: 'gmail',
-                 auth: {
-                     user: 'navneetforportfolio@gmail.com',
-                     pass: 'TIMUS1994'
-                 }
-             });
- 
-             var mailOptions = {
-                 from:	'navneetforportfolio@gmail.com',
-                 to:		this.email,
-                 subject:'FundRaiser Account Activation',
-                 html:	 dataThirdParty(this.email)
-             };
- 
-             transporter.sendMail(mailOptions, function(error, mailsent){
-                 if (error) {
-                       resolve({
-                           status: false,
-                           message: 'Registration could not procced at this time, Please try again later!'
-                       });
-                 } else {
-                     return resolve({
-                         status: true,
-                         message: 'Registration Done ! A mail has been sent to your id' + that.email
-                     });
-                 }
-             });
- 
- 
- 
-                
-          })
-     }
 }
 
 module.exports =  userSignupFunctions;

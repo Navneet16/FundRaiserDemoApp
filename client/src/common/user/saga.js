@@ -1,32 +1,36 @@
-import { put, takeEvery , takeLatest } from 'redux-saga/effects';
+import { put, takeLatest , takeEvery } from 'redux-saga/effects';
 
 import * as types from '../types';
 import * as actions from '../actions';
 import axios from 'axios'
 
 
-export function* fetchTopLiked(){
-    yield takeEvery( types.SAGA_FETCH_TOP_LIKED_PROJECTS, fetchTopLikedProjects );
-}
+export function* registerUser(){
+    yield takeLatest( types.SAGA_REGISTER_USER_DETAILS_THIRD_PARTY_LOGIN, registerUserDetails );
 
-function* clearState(){
-    // yield put(actions.generateMnemonic.clearResponse());
+    
 }
-
-function* fetchTopLikedProjects(action){
+function* registerUserDetails(action){
     try{
-          var projects = yield fetchApi();
-          projects.status ? yield put(actions.topLiked.setTopLikedProjects(projects.data.data)) : alert(`${projects.message}`);
+          var user = yield fetchApi(action.payload);
+          user.status ? yield put(actions.user.setUserDetails({userEmail:action.payload.userEmail , userToken : action.payload.token})) : alert(`${user.message}`);
     } catch(e){
         
         // yield put(actions.unlockAccount.errResponse());
     }
 }
 
-function fetchApi() 
+function fetchApi(user) 
     {
-        return new Promise((resolve, reject)=>{axios.get(`http://localhost:3001/api/fetchTopLikedProjects`).then(( info, err) => {
+
+        return new Promise((resolve, reject)=>{axios.post(`http://localhost:3001/api/thirdPartyLogin`,{
+            email : user.userEmail,
+            token : user.token
+        }).then(( info, err) => {
+            console.log(info)
         if(err) reject({status: false, message : "Some error occured while fetching transaction history. Please try again later." });
-        else resolve({status: true , data : info.data});
-    })}
-)}
+        else resolve({status: true });
+    })
+  }
+)
+}
