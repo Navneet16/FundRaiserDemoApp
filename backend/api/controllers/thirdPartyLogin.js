@@ -22,20 +22,30 @@ register = async (req, res, next) => {
                             await thirdPartyLogin.saveUser(getNewUserThirdPartyResponse.newData).then(async function(saveUserResponse){
 
                                 if(saveUserResponse.status){
-                                   await thirdPartyLogin.sendRegistrationMailThirdParty().then(async function(sendRegistrationMailThirdPartyResponse){
+                                    await thirdPartyLogin.saveUserThirdPartyToken().then(async function(saveUserThirdPartyTokenResponse){
+                                          if(saveUserThirdPartyTokenResponse.status){
+                                            await thirdPartyLogin.sendRegistrationMailThirdParty().then(async function(sendRegistrationMailThirdPartyResponse){
 
-                                       if(sendRegistrationMailThirdPartyResponse.status){
+                                                if(sendRegistrationMailThirdPartyResponse.status){
+                                                     return res.json({
+                                                         status: sendRegistrationMailThirdPartyResponse.status,
+                                                         message: sendRegistrationMailThirdPartyResponse.message
+                                                     }); 
+                                                }else{
+                                                 return res.json({
+                                                     status: sendRegistrationMailThirdPartyResponse.status,
+                                                     message: sendRegistrationMailThirdPartyResponse.message
+                                                 }); 
+                                                }
+                                            })
+                                          }else{
                                             return res.json({
-                                                status: sendRegistrationMailThirdPartyResponse.status,
-                                                message: sendRegistrationMailThirdPartyResponse.message
-                                            }); 
-                                       }else{
-                                        return res.json({
-                                            status: sendRegistrationMailThirdPartyResponse.status,
-                                            message: sendRegistrationMailThirdPartyResponse.message
-                                        }); 
-                                       }
-                                   })
+                                                status: saveUserThirdPartyTokenResponse.status,
+                                                message: saveUserThirdPartyTokenResponse.message
+                                            });
+                                          }
+                                    })
+ 
                                 }else{
                                     return res.json({
                                         status: saveUserResponse.status,
@@ -52,16 +62,19 @@ register = async (req, res, next) => {
                     })
                 }else{
                       // check for token and authenticate
-                      await thirdPartyLogin.checkUserToken().then(async function(checkUserTokenResponse){
-                           if(checkUserTokenResponse.status){
-                                return res.json({
-                                    status: checkUserTokenResponse.status,
-                                    message: checkUserTokenResponse.message
-                                }); 
+
+                      await thirdPartyLogin.saveUserThirdPartyToken().then(async function(saveUserThirdPartyTokenResponse){
+                          console.log(saveUserThirdPartyTokenResponse)
+                           if(saveUserThirdPartyTokenResponse.status){
+                            return res.json({
+                                status: saveUserThirdPartyTokenResponse.status,
+                                message: saveUserThirdPartyTokenResponse.message
+                            }); 
+                              
                            }else{
                             return res.json({
-                                status: checkUserTokenResponse.status,
-                                message: checkUserTokenResponse.message
+                                status: saveUserThirdPartyTokenResponse.status,
+                                message: saveUserThirdPartyTokenResponse.message
                             }); 
                            }
                       })

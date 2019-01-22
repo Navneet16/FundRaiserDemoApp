@@ -6,7 +6,8 @@ class dataFetch {
     constructor(options) {
         const defaults = {
             category: "",
-            email : ""
+            email : "",
+            thirdPartyToken : ""
         };
         const populated = Object.assign(defaults, options);
         for (const key in populated) {
@@ -78,6 +79,31 @@ class dataFetch {
                 }
 
             })
+
+        })
+    }
+    checkUserThirdPartyToken(){
+        return new Promise((resolve, reject) => {
+            var that = this
+                    userSchema
+                        .user
+                        .findOne({email: this.email})
+                        .then((result) => {
+                            console.log(result)
+                            result
+                                .thirdPartyToken
+                                .forEach((element, index) => {
+                                    if (result.thirdPartyToken.length - 1 == index) {
+                                        if (element.thirdPartyToken === that.thirdPartyToken) {
+                                            return resolve({status: true})
+                                        } else {
+                                            return resolve({status: false, message: "Unauthorized Access"})
+                                        }
+                                    } else if (element.thirdPartyToken === that.thirdPartyToken) {
+                                        return resolve({status: true})
+                                    }
+                                });
+                        })
 
         })
     }

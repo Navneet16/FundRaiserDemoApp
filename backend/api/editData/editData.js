@@ -100,6 +100,56 @@ class DataEdit {
             })
         })
     }
+    deleteUserLoginThirdPartyToken() {
+        return new Promise((resolve, reject) => {
+            var that = this
+          
+                    userSchema
+                        .user
+                        .findOne({email: this.email})
+                        .then((user) => {
+                            if (user) {
+                                user
+                                    .thirdPartyToken
+                                    .forEach((ex, j) => {
+                                        if (ex.thirdPartyToken == that.thirdPartyToken) {
+                                            userSchema
+                                                .user
+                                                .updateOne({
+                                                    email: this.email
+                                                }, {
+                                                    $pull: {
+                                                        thirdPartyToken: {
+                                                            thirdPartyToken: that.thirdPartyToken
+                                                        }
+                                                    }
+                                                }, {multi: true})
+                                                .then(function (save, err) {
+                                                    if (save) {
+                                                        user
+                                                            .save(function (err, saved) {
+                                                                if (saved) {
+                                                                    return resolve({status: true, message: "Logout Successful"});
+                                                                } else {
+                                                                    return resolve({status: true, message: "Oops!! Some Error Occured"});
+                                                                }
+                                                            })
+                                                    }
+                                                    if (err) {
+                                                        return resolve({status: true, message: "Oops!! Some Error Occured"});
+                                                    }
+                                                })
+                                        }
+                                    })
+                            } else {
+                                return resolve({status: true, message: "Unauthorized Request"});
+                            }
+                        })
+
+ 
+        })
+    }
+    
 
 }
 

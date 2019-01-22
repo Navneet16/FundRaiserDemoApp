@@ -55,8 +55,7 @@ class thirdPartyLoginFunctions {
                   password: null,
                   emailerToken: null,
                   linkExpires: null,
-                  status: true,
-                  thirdPartyToken : this.token
+                  status: true
               })
             
              resolve({status : true , newData:  newData}) 
@@ -82,6 +81,33 @@ class thirdPartyLoginFunctions {
          })
       })   
     }
+    saveUserThirdPartyToken() {
+        return new Promise((resolve, reject) => {
+            var that = this;
+            userSchema
+                .user
+                .findOne({email: this.email})
+                .then(function (saveUserTokenResponse) {
+                    saveUserTokenResponse
+                        .thirdPartyToken
+                        .push({
+                            thirdPartyToken: that.token,
+                            exp: Date.now() + 1800000
+                        });
+                    saveUserTokenResponse
+                        .save()
+                        .then(function (save, err) {
+                            if (save) {
+                                return resolve({status: true})
+                            }
+                            if (err) {
+                                return resolve({status: false})
+                            }
+                        })
+                })
+        })
+    }
+
     sendRegistrationMailThirdParty(){
         return new Promise((resolve , reject)=>{
             var that = this
@@ -123,18 +149,20 @@ class thirdPartyLoginFunctions {
                 .user
                 .findOne({email: this.email})
                 .then((result) => {
+                    if(result.thirdPartyToken.length == 0){
+                        return resolve({status: true})
+                    }
                     result
                         .thirdPartyToken
                         .forEach((element, index) => {
-    
                             if (result.thirdPartyToken.length - 1 == index) {
-                                if (element === that.token) {
+                                if (element.thirdPartyToken === that.token) {
                                     return resolve({status: true})
                                 } else {
 
                                     return resolve({status: false, message: "Unauthorized Access"})
                                 }
-                            } else if (element.token === that.token) {
+                            } else if (element.thirdPartyToken === that.token) {
                                 return resolve({status: true})
                             }
                         });

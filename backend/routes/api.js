@@ -6,7 +6,7 @@ var fetchFeatured = require('../api/controllers/fetchFeatured.js')
 var userSchema = require('../api/models/user.js')
 var userSignUp = require('../api/controllers/userSignup.js')
 var userThirdPartyLogin = require('../api/controllers/thirdPartyLogin')
-var userLogin = require('../api/controllers/userLogin.js')
+var userThirdPartyLogout = require('../api/controllers/thirdPartyLogout.js')
 
 var getIp = function(req , res , next){
   var ip = req.headers['x-forwarded-for'] ||
@@ -22,6 +22,7 @@ router.post('/fetch', category.getCategoryData)
 router.get('/fetchTopLikedProjects' , topLiked.getTopLiked)
 router.get('/fetchFeatured' , fetchFeatured.getFetchFeatured )
 router.post('/thirdPartyLogin' , userThirdPartyLogin.register )
+router.post('/thirdPartyLogout' , userThirdPartyLogout.logout )
 router.post('/register', userSignUp.register)
 
 
