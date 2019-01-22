@@ -88,3 +88,26 @@ export const thirdPartyLogin ={
         }
     }
 }
+export const thirdPartylogOut ={
+
+    thirdPartylogOut : (payload) => {
+        return {
+            type : types.LOGOUT_USER,
+            payload
+        }
+    }
+}
+export const addProject = {
+    setSection : (payload) => {
+        return {
+            type : types.SET_SECTION,
+            payload
+        }
+    },
+    submitProject : (payload) => {
+        return {
+            type : types.SUBMIT_PROJECT,
+            payload
+        }
+    }
+}

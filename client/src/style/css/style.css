@@ -1470,3 +1470,13 @@ textarea:focus ~ .highlight {
     background: transparent!important;
     padding: 0px!important;
   }
+  .addProjectHeading{
+    text-align: center;
+  }
+  .previous {
+    text-align: left;
+    }
+    
+    .next {
+    text-align: right;
+    }

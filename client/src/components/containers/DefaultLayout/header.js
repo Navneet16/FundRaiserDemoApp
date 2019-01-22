@@ -13,6 +13,10 @@ firebase.initializeApp({
 
 
  class Header extends Component {
+    constructor(props){
+        super(props)
+         this.logOut =  this.logOut.bind(this)
+    }   
  componentDidMount(){
     firebase.auth().onAuthStateChanged(user => {
 
@@ -37,6 +41,14 @@ firebase.initializeApp({
         }
     })
  }    
+ logOut(){
+    //  console.log('llllll')
+     this.props.signOut({
+         token : this.props.userToken,
+         userEmail : this.props.userEmail
+     });
+     firebase.auth().signOut()
+ }
   render() {
     return (
       <div>  
@@ -66,7 +78,16 @@ firebase.initializeApp({
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/signin">Contact</NavLink>
-                                </li>{
+                                </li>
+                                {
+                                    !this.props.loginStatus ?
+
+                                        ""  :
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/addProject">Add Project</NavLink>
+                                    </li>
+                                }
+                                {
                                     !this.props.loginStatus ?
 
                                         <li className="nav-item">
@@ -79,7 +100,7 @@ firebase.initializeApp({
                                              <NavLink className="dropdown-item" to="/regular">Catagory</NavLink>
                                              <NavLink className="dropdown-item" to="/regular">Single Blog</NavLink>
                                              <NavLink className="dropdown-item" to="/regular">Regular Page</NavLink>
-                                             <button className="dropdown-item" onClick={() => firebase.auth().signOut()}>Log Out!</button>
+                                             <button className="dropdown-item" onClick={this.logOut}>Log Out!</button>
                                                  
                                          </div>
                                      </li>
@@ -108,14 +129,16 @@ function mapStateToProps(state){
  return {
    loginStatus: state.User.loginStatus,
    userEmail : state.User.userEmail,
-   userName : state.User.userName
+   userName : state.User.userName,
+   userToken : state.User.userToken
  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     changeUserState : (payload)=>{dispatch(actions.user.changeUserState(payload))},
-    setUserDetailsForThirdPartyLogin : (payload)=>{dispatch(actions.thirdPartyLogin.thirdPartyUser(payload))}
+    setUserDetailsForThirdPartyLogin : (payload)=>{dispatch(actions.thirdPartyLogin.thirdPartyUser(payload))},
+    signOut : (payload)=>{dispatch(actions.thirdPartylogOut.thirdPartylogOut(payload))}
   }
 }
 

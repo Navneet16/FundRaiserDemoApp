@@ -8,6 +8,7 @@ import {Blog} from '../../blog'
 import {Regular} from '../../regular'
 import {Contact} from '../../contact'
 import {SignIn} from '../../user'
+import {AddProject} from '../../addProject'
 import {connect} from 'react-redux'
 import * as actions from  "../../../common/actions"
 
@@ -20,13 +21,14 @@ class DefaultLayout extends Component {
     return (
        <div> 
           <Header/>
-            <Switch>
+            <Switch>AddProject
               <Route exact path='/' component={HomePage} />
               <Route path='/project' component={Project} />
               <Route path='/blog' component={Blog} />
               <Route path='/regular' component={Regular} />
               <Route path='/contact' component={Contact} />
               {!this.props.loginStatus && <Route path='/signin' component={SignIn} />}
+              <Route path='/addProject' component={AddProject} />
               <Redirect to='/' />
              </Switch> 
           <Footer/>
