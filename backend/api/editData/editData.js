@@ -1,9 +1,16 @@
 var projects = require('../models/projects');
 var userSchema = require('../models/user')
+var randomstring = require("randomstring");
 
 class DataEdit {
     constructor(options) {
         const defaults = {
+            description : "",
+            category : "",
+            subCategory : "",
+            country : "",
+            time : "",
+            email : ""
         };
         const populated = Object.assign(defaults, options);
         for (const key in populated) {
@@ -147,6 +154,32 @@ class DataEdit {
                         })
 
  
+        })
+    }
+    saveProjectInDb() {
+        return new Promise((resolve, reject) => {
+              console.log(this)
+              var newProject = new projects.project({
+                projectId : randomstring.generate({
+                    length: 16,
+                    charset: 'alphanumeric'
+                  }),  
+                creator : this.email,
+                description : this.description,
+                category : this.category,
+                subCategory : this.subCategory,
+                location : this.country,
+                createdOn : this.time
+              })
+              newProject.save(function(err , save){
+                  if(err){
+                    return resolve({status: false, message: "Project Failed To Save"});
+
+                  }else{
+                    return resolve({status: true, message: "Project Saved" , data : save.projectId});
+                      
+                  }
+              })
         })
     }
     

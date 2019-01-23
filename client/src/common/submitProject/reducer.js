@@ -7,7 +7,7 @@ const INITIAL_STATE_PROJECT_INFO = {
 
 export default function Project(state = INITIAL_STATE_PROJECT_INFO, action){
     switch (action.type) {
-        case types.CHANGE_SET_CURRENT_PROJECT :
+        case types.SET_PROJECT :
          return setCurrentProjectState(state , action.payload)
         default:
         return state;
@@ -17,7 +17,7 @@ export default function Project(state = INITIAL_STATE_PROJECT_INFO, action){
 function setCurrentProjectState(state, payload){
     return {
         ...state,
-        currentProject : payload 
+        currentProject : payload.projectId 
     }
 }
 

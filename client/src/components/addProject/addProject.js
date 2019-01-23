@@ -85,6 +85,11 @@ finalizeProject(e){
        country : this.state.country.label
      })
   }
+} 
+componentDidUpdate(props){
+   if(props.projectId !== this.props.projectId){
+      this.props.history.replace(`/editProject?${this.props.projectId}`)
+   }
 }
 
   render() {
@@ -129,12 +134,13 @@ finalizeProject(e){
 
 function mapStateToProps(state){
  return {
-  selectCategorySection: state.addProjectSection.selectCategorySection,
-  projectDescription: state.addProjectSection.projectDescription,
-  selectCountry: state.addProjectSection.selectCountry,
-  loginStatus: state.User.loginStatus,
-  userEmail : state.User.userEmail,
-  userToken : state.User.userToken
+    selectCategorySection: state.addProjectSection.selectCategorySection,
+    projectDescription: state.addProjectSection.projectDescription,
+    selectCountry: state.addProjectSection.selectCountry,
+    loginStatus: state.User.loginStatus,
+    userEmail : state.User.userEmail,
+    userToken : state.User.userToken,
+    projectId : state.Project.currentProject
   }
 }
 

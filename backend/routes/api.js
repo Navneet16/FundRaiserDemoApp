@@ -7,6 +7,7 @@ var userSchema = require('../api/models/user.js')
 var userSignUp = require('../api/controllers/userSignup.js')
 var userThirdPartyLogin = require('../api/controllers/thirdPartyLogin')
 var userThirdPartyLogout = require('../api/controllers/thirdPartyLogout.js')
+var submitProject = require('../api/controllers/submitProject')
 
 var getIp = function(req , res , next){
   var ip = req.headers['x-forwarded-for'] ||
@@ -24,6 +25,8 @@ router.get('/fetchFeatured' , fetchFeatured.getFetchFeatured )
 router.post('/thirdPartyLogin' , userThirdPartyLogin.register )
 router.post('/thirdPartyLogout' , userThirdPartyLogout.logout )
 router.post('/register', userSignUp.register)
+
+router.post('/submitProject' , submitProject.submitProject )
 
 
 module.exports = router;

@@ -109,5 +109,11 @@ export const addProject = {
             type : types.SUBMIT_PROJECT,
             payload
         }
+    },
+    setProject : (payload) => {
+        return {
+            type : types.SET_PROJECT,
+            payload  
+        }
     }
 }

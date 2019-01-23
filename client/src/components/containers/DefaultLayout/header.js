@@ -77,7 +77,7 @@ firebase.initializeApp({
                                     <NavLink className="nav-link" to="/blog">Blogs</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/signin">Contact</NavLink>
+                                    <NavLink className="nav-link" to="/editProject/basics">Contact</NavLink>
                                 </li>
                                 {
                                     !this.props.loginStatus ?

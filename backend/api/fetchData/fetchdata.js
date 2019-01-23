@@ -7,7 +7,8 @@ class dataFetch {
         const defaults = {
             category: "",
             email : "",
-            thirdPartyToken : ""
+            thirdPartyToken : "",
+            token : ""
         };
         const populated = Object.assign(defaults, options);
         for (const key in populated) {
@@ -89,7 +90,6 @@ class dataFetch {
                         .user
                         .findOne({email: this.email})
                         .then((result) => {
-                            console.log(result)
                             result
                                 .thirdPartyToken
                                 .forEach((element, index) => {
@@ -113,7 +113,7 @@ class dataFetch {
                 var that = this;
                 projectSchema
                 .project
-                .find({category: this.category})
+                .find({category: this.category , status : true})
                 .then(function (result) {
                     if (result) {
                         resolve({
@@ -168,6 +168,8 @@ class dataFetch {
             ]).then(function(topLikedResponse){
                 var array = []
                 topLikedResponse.forEach((element,i,a) => {
+                    if(element.docs.length != 0){
+                    console.log(element.docs)
                     if(a.length -1 == i){
                         array.push(element.docs[0].data)
                         return resolve({
@@ -177,6 +179,7 @@ class dataFetch {
                         })
                     }
                     array.push(element.docs[0].data)
+                  } 
                 });
             })
           } catch (error) {

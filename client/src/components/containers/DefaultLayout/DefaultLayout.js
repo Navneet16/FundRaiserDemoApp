@@ -9,11 +9,10 @@ import {Regular} from '../../regular'
 import {Contact} from '../../contact'
 import {SignIn} from '../../user'
 import {AddProject} from '../../addProject'
+import {EditProjectBasics} from '../../editProject'
 import {connect} from 'react-redux'
 import * as actions from  "../../../common/actions"
 
-
- 
 class DefaultLayout extends Component {
 
 
@@ -28,7 +27,9 @@ class DefaultLayout extends Component {
               <Route path='/regular' component={Regular} />
               <Route path='/contact' component={Contact} />
               {!this.props.loginStatus && <Route path='/signin' component={SignIn} />}
-              <Route path='/addProject' component={AddProject} />
+              {this.props.loginStatus && <Route path='/addProject' component={AddProject} />}
+              {this.props.loginStatus && <Route path='/editProject/basics' component={EditProjectBasics} />}
+              
               <Redirect to='/' />
              </Switch> 
           <Footer/>

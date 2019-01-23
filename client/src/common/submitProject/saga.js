@@ -10,8 +10,8 @@ export function* Project(){
 }
 function* submit(action){
     try{
-          var user = yield submitProject(action.payload);
-        //   user.status ? yield put(actions.user.setUserDetails({userEmail:action.payload.userEmail , userToken : action.payload.token})) : alert(`${user.message}`);
+          var submitProj = yield submitProject(action.payload);
+          submitProj.status ? yield put(actions.addProject.setProject({projectId :submitProj.data })) : alert(`${submitProj.message}`);
     } catch(e){
         
         // yield put(actions.unlockAccount.errResponse());
@@ -24,12 +24,17 @@ function submitProject(project)
     {
         console.log(project)
         return new Promise((resolve, reject)=>{axios.post(`http://localhost:3001/api/submitProject`,{
-            email : project.userEmail,
-            token : project.token
-        }).then(( info, err) => {
-            console.log(info)
+            email : project.email,
+            token : project.token,
+            description : project.description,
+            category : project.category,
+            subCategory : project.subCategory,
+            country : project.country,
+            time : Date.now()
+      }).then(( info, err) => {
         if(err) reject({status: false, message : "Some error occured while fetching transaction history. Please try again later." });
-        else resolve({status: true });
+        else if(!info.data.status)  reject({status: false, message : "Some error occured while fetching transaction history. Please try again later." });
+        else  resolve({status: true , data : info.data.data});
     })
   }
 )
