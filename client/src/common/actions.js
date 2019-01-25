@@ -78,6 +78,13 @@ export const user = {
             type : types.SET_USER_DETAILS,
             payload
         }
+    },
+    submitUserBasics : (payload) => {
+        console.log(payload)
+        return {
+            type : types.SET_USER_BASICS,
+            payload
+        }
     }
 }
 export const thirdPartyLogin ={

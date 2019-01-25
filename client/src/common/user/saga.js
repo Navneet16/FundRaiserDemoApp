@@ -8,6 +8,7 @@ import axios from 'axios'
 export function* registerUser(){
     yield takeLatest( types.SAGA_REGISTER_USER_DETAILS_THIRD_PARTY_LOGIN, registerUserDetails );
     yield takeLatest( types.LOGOUT_USER, logoutUser );
+    yield takeLatest(types.SET_USER_BASICS , sendBasics)
 }
 function* registerUserDetails(action){
     try{
@@ -22,6 +23,16 @@ function* registerUserDetails(action){
 function* logoutUser(action){
     try {
         var userLogOut = yield signOut(action.payload)
+        console.log(userLogOut)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+
+function* sendBasics(action){
+    try {
+        var userLogOut = yield sendBasic(action.payload)
         console.log(userLogOut)
     } catch (e) {
         console.log(e)
@@ -54,4 +65,19 @@ function signOut(user){
     })
     }
     )
+}
+
+function sendBasic(userBasics){
+        return new Promise((resolve, reject)=>{axios.post(`http://localhost:3001/api/sendBasics`,{
+                title : userBasics.title,
+                subtitle : userBasics.subTitle,
+                image : userBasics.droppedImage,
+                video : userBasics.droppedVideo
+        }).then(( info, err) => {
+            console.log(info)
+        if(err) reject({status: false, message : "Some error occured while fetching transaction history. Please try again later." });
+        else resolve({status: true });
+     })
+    }
+  )
 }

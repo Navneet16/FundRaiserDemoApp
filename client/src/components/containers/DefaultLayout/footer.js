@@ -7,7 +7,7 @@ import React, { Component } from 'react';
     return (
 
 
-        <footer className="footer-area">
+        <footer className="footer-area fixFooter">
         <div className="container">
             <div className="row">
                 <div className="col-12 col-md-4">

@@ -12,16 +12,16 @@ import SelectCountry from './selectCountry'
 
  class AddProject extends Component {
     constructor(props) {
-        super(props);
-        this.onChange1 =  this.onChange1.bind(this)
-        this.onChange2 =  this.onChange2.bind(this)
-        this.submitCategory =  this.submitCategory.bind(this)
-        this.previuosCategory =  this.previuosCategory.bind(this)
-        this.nextCountry =  this.nextCountry.bind(this)
-        this.onChangeDescription =  this.onChangeDescription.bind(this)
-        this.changeHandler =  this.changeHandler.bind(this)
-        this.previuosDescription =  this.previuosDescription.bind(this)
-        this.finalizeProject =  this.finalizeProject.bind(this)
+      super(props);
+      this.onChange1 =  this.onChange1.bind(this)
+      this.onChange2 =  this.onChange2.bind(this)
+      this.submitCategory =  this.submitCategory.bind(this)
+      this.previuosCategory =  this.previuosCategory.bind(this)
+      this.nextCountry =  this.nextCountry.bind(this)
+      this.onChangeDescription =  this.onChangeDescription.bind(this)
+      this.changeHandler =  this.changeHandler.bind(this)
+      this.previuosDescription =  this.previuosDescription.bind(this)
+      this.finalizeProject =  this.finalizeProject.bind(this)
 
 
         this.options = countryList().getData()
@@ -88,7 +88,7 @@ finalizeProject(e){
 } 
 componentDidUpdate(props){
    if(props.projectId !== this.props.projectId){
-      this.props.history.replace(`/editProject?${this.props.projectId}`)
+      this.props.history.replace(`/editProject/basics?${this.props.projectId}`)
    }
 }
 
@@ -119,9 +119,8 @@ componentDidUpdate(props){
                          sectionToShow
                        }
 
-      </div>
-    
-                    </div>
+                     </div>
+                 </div>
             </div>
         </div>
     </section>

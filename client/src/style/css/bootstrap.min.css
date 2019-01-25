@@ -3463,7 +3463,7 @@ tbody.collapse.show {
 	height: 0;
 	margin: .5rem 0;
 	overflow: hidden;
-	border-top: 1px solid #e9ecef
+	border-top: 2px solid #e9ecef
 }
 
 .dropdown-item {
