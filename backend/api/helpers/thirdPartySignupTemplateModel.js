@@ -180,7 +180,7 @@ function dataThirdParty(emailn){
                                                                                 <td>
                                                                                  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" class="m_4585596968787092300inner">
                                                                                     <tbody><tr>
-                                                                                         <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332" class="m_4585596968787092300smallfont">You are receiving this because you (or someone else) have Logged In with third party using your mail ID ${emailn}. If you are the intended recipient then </td>
+                                                                                         <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332" class="m_4585596968787092300smallfont">You are receiving this because you (or someone else) have Logged In with third party using your mail ID ${emailn}. </td>
                                                                                          <td class="m_4585596968787092300hide" width="23">&nbsp;</td>
                                                                                     </tr>
                                                                                     <tr>
@@ -222,7 +222,7 @@ function dataThirdParty(emailn){
                                                                                          <td class="m_4585596968787092300hide" height="20">&nbsp;</td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                         <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332" class="m_4585596968787092300smallfont">If you did not sign up to the FundRaiser Exchange, please ignore this email and your email will not be used for Signup.</td>
+                                                                                         <td style="font:14px/19px Arial,Helvetica,sans-serif;color:#333332" class="m_4585596968787092300smallfont">If you did not sign up to the FundRaiser, please ignore this email and your email will not be used for Signup.</td>
                                                                                          <td class="m_4585596968787092300hide" width="23">&nbsp;</td>
                                                                                     </tr>
                                                                                     <tr>

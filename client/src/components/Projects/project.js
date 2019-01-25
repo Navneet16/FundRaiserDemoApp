@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {  NavLink } from 'react-router-dom';
 // import PromotionalSection from './promotionalSection'
 import $ from 'jquery'
+import Filter from './filter'
 
  class Project extends Component {
   componentDidMount(){
@@ -12,7 +13,6 @@ import $ from 'jquery'
     return (
       <div>    
         <div className="hero-area height-400 bg-img background-overlay" style={{"backgroundImage": "url(img/blog-img/bg3.jpg)"}}></div>
-
     <div className="main-content-wrapper section-padding-100">
         <div className="container">
             <div className="row justify-content-center">
@@ -20,6 +20,8 @@ import $ from 'jquery'
                     <div className="post-content-area mb-100">
                         <div className="world-catagory-area">
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
+    <Filter/>
+
                                 <li className="title">Lifestyle</li>
 
                                 <li className="nav-item">

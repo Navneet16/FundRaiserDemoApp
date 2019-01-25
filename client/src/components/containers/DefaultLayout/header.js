@@ -93,6 +93,7 @@ firebase.initializeApp({
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/signin">Sign in</NavLink>
                                         </li>   :
+                                        
                                          <li className="nav-item dropdown">
                                          <span className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { `${this.props.userEmail}`}</span>
                                          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
